@@ -9,4 +9,14 @@ public class FarmAnimal extends Animal {
         this.PRODUCED_PRODUCT = PRODUCED_PRODUCT;
         this.TIME_PER_PRODUCT = TIME_PER_PRODUCT;
     }
+
+    @Override
+    public int getXLoc() {
+        return super.getXLoc();
+    }
+
+    @Override
+    public int getYLoc() {
+        return super.getYLoc();
+    }
 }

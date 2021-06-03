@@ -1,9 +1,8 @@
-public class Dog extends Animal{
+public class Dog extends OtherAnimals{
     private static final int DOG_PRICE = 100;
-    private static final int DOG_MOVE_PER_TIME_UNIT = 1;
 
     public Dog() {
-        super(DOG_PRICE, DOG_MOVE_PER_TIME_UNIT);
+        super(DOG_PRICE);
     }
 
     public static int getDogPrice() {
