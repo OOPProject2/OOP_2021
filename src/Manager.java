@@ -7,13 +7,18 @@ public class Manager {
     private final ArrayList<Cat> cats;
     private final ArrayList<Dog> dogs;
     private int coins;
-
-    public Manager() {
+    private static String playerName;
+    public Manager(String playerName) {
         this.farmAnimals = new ArrayList<>();
         this.wildAnimals = new ArrayList<>();
         this.dogs = new ArrayList<>();
         this.cats = new ArrayList<>();
         this.coins = 0;
+        this.playerName = playerName;
+    }
+
+    public static String getPlayerName() {
+        return playerName;
     }
 
     public void buy(String animalName) {
