@@ -8,6 +8,7 @@ public class Manager {
     private final ArrayList<Dog> dogs;
     private int coins;
     private static String playerName;
+
     public Manager(String playerName) {
         this.farmAnimals = new ArrayList<>();
         this.wildAnimals = new ArrayList<>();
@@ -30,8 +31,10 @@ public class Manager {
                     farmAnimals.add(chicken);
                     System.out.println("Chicken added successfully at point x = " + chicken.getXLoc()
                             + " y = " + chicken.getYLoc());
+                    Log.buyAnimalLog("chicken", true,"");
                 } else {
                     System.out.println("not enough coins");
+                    Log.buyAnimalLog("chicken", false,"not enough coins");
                 }
             }
             case "turkey": {
@@ -41,8 +44,10 @@ public class Manager {
                     farmAnimals.add(turkey);
                     System.out.println("Turkey added successfully at point x = " + turkey.getXLoc()
                             + " y = " + turkey.getYLoc());
+                    Log.buyAnimalLog("turkey",true,"");
                 } else {
                     System.out.println("not enough coins");
+                    Log.buyAnimalLog("turkey",false,"not enough coins");
                 }
             }
             case "buffalo": {
@@ -52,8 +57,10 @@ public class Manager {
                     farmAnimals.add(buffalo);
                     System.out.println("Buffalo added successfully at point x = " + buffalo.getXLoc()
                             + " y = " + buffalo.getYLoc());
+                    Log.buyAnimalLog("buffalo",true,"");
                 } else {
                     System.out.println("not enough coins");
+                    Log.buyAnimalLog("buffalo",false,"not enough coins");
                 }
             }
             case "dog": {
@@ -63,8 +70,10 @@ public class Manager {
                     dogs.add(dog);
                     System.out.println("Dog added successfully at point x = " + dog.getXLoc()
                             + " y = " + dog.getYLoc());
+                    Log.buyAnimalLog("dog",true,"");
                 } else {
                     System.out.println("not enough coins");
+                    Log.buyAnimalLog("dog",false,"not enough coins");
                 }
             }
             case "cat": {
@@ -74,12 +83,15 @@ public class Manager {
                     cats.add(cat);
                     System.out.println("Cat added successfully at point x = " + cat.getXLoc()
                             + " y = " + cat.getYLoc());
+                    Log.buyAnimalLog("cat",true,"");
                 } else {
                     System.out.println("not enough coins");
+                    Log.buyAnimalLog("cat",false,"not enough coins");
                 }
             }
             default: {
                 System.out.println("animal not found");
+                Log.buyAnimalLog(animalName,false,"animal not found");
             }
         }
     }

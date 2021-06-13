@@ -10,29 +10,28 @@ public class Log {
         Log.manager = manager;
         try {
             LOG = new FileWriter("log.txt");
-            LOG.write("[INFO], player name : " + Manager.getPlayerName()  + getTime() + "\n");
+            LOG.write("[INFO], player name : " + Manager.getPlayerName() + getTime() + "\n");
             LOG.flush();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             System.out.println("ERROR : Creating Log File");
             e.printStackTrace();
         }
     }
 
-    public static void buyAnimalLog(String animalName,boolean condition){
-            try {
-                if (condition)
-                LOG.write("INFO : " + "animal buy, " + "name : " + animalName + "status : successful" + getTime() );
-                else
-                    LOG.write("ALERT : " + "animal buy, " + "name : " + animalName + "status : unsuccessful" + getTime() );
-            }
-            catch (IOException e){
-                System.out.println("ERROR : Writing to Log File");
-                e.printStackTrace();
-            }
+    public static void buyAnimalLog(String animalName, boolean condition,String reason) {
+        try {
+            if (condition)
+                LOG.write("INFO : " + "animal buy, " + "name : " + animalName + "status : successful" + getTime());
+            else
+                LOG.write("ALERT : " + "animal buy, " + "name : " + animalName + "status : unsuccessful reason : "
+                        + reason + getTime());
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
     }
 
-    private static String getTime(){
+    private static String getTime() {
         return " ~Time : " + Calendar.getInstance().getTime();
     }
 }
