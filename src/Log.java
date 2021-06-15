@@ -31,6 +31,29 @@ public class Log {
         }
     }
 
+    public static void watering(int x, int y, int reasonCode){
+        try {
+            switch (reasonCode) {
+                case 1: {
+                    LOG.write("ALERT : watering attempt unsuccessful!!! reason : not enough water" + getTime());
+                }
+                case 2: {
+                    LOG.write("ALERT : watering attempt unsuccessful!!! reason : incorrect coordinates" + getTime());
+                }
+                case 3: {
+                    LOG.write("ALERT : watering attempt successful at coordinates " + x + " " + y + getTime());
+                }
+                default: {
+                    LOG.write("ALERT : watering attempt");
+                }
+            }
+        }
+        catch (IOException e){
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+            }
+    }
+
     private static String getTime() {
         return " ~Time : " + Calendar.getInstance().getTime();
     }

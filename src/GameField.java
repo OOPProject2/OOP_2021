@@ -8,4 +8,12 @@ public class GameField {
             }
         }
     }
+    public static void watering(int x, int y){
+        if (x > 6 || x < 1 || y > 6 || y < 1){
+            Log.watering(x,y,2);
+        } else{
+            //TODO time handled event
+            gameField[x-1][y-1]++;
+        }
+    }
 }
