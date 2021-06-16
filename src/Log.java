@@ -31,20 +31,20 @@ public class Log {
         }
     }
 
-    public static void watering(int x, int y, int reasonCode){
+    public static void planting(int x, int y, int reasonCode){
         try {
             switch (reasonCode) {
                 case 1: {
-                    LOG.write("ALERT : watering attempt unsuccessful!!! reason : not enough water" + getTime());
+                    LOG.write("ALERT : planting attempt unsuccessful!!! reason : not enough water" + getTime());
                 }
                 case 2: {
-                    LOG.write("ALERT : watering attempt unsuccessful!!! reason : incorrect coordinates" + getTime());
+                    LOG.write("ALERT : planting attempt unsuccessful!!! reason : incorrect coordinates" + getTime());
                 }
                 case 3: {
-                    LOG.write("ALERT : watering attempt successful at coordinates " + x + " " + y + getTime());
+                    LOG.write("ALERT : planting attempt successful at coordinates " + x + " " + y + getTime());
                 }
                 default: {
-                    LOG.write("ALERT : watering attempt");
+                    LOG.write("ALERT : planting attempt");
                 }
             }
         }

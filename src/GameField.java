@@ -8,12 +8,13 @@ public class GameField {
             }
         }
     }
-    public static void watering(int x, int y){
+    public static boolean planting(int x, int y){
         if (x > 6 || x < 1 || y > 6 || y < 1){
-            Log.watering(x,y,2);
+            Log.planting(x,y,2);
+            return false;
         } else{
-            //TODO time handled event
             gameField[x-1][y-1]++;
+            return true;
         }
     }
 }
