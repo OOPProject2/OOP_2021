@@ -1,7 +1,10 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 
 public class Manager {
+    private final ArrayList<User> users;
+    File userFile;
     private final ArrayList<FarmAnimal> farmAnimals;
     private final ArrayList<WildAnimal> wildAnimals;
     private final ArrayList<Cat> cats;
@@ -10,6 +13,9 @@ public class Manager {
     private static String playerName;
 
     public Manager(String playerName) {
+        users=new ArrayList<>();
+        userFile=new File("Users.txt");
+        User.readUsers(userFile,users);
         this.farmAnimals = new ArrayList<>();
         this.wildAnimals = new ArrayList<>();
         this.dogs = new ArrayList<>();
@@ -35,7 +41,28 @@ public class Manager {
     public static String getPlayerName() {
         return playerName;
     }
-
+    public void creatAccountForUser(String userName,String password){
+        User user=new User(userName,password,0,200);
+        users.add(user);
+        user.appendToFile(userFile);
+    }
+    public boolean foundUsername(String userName){
+        for (User user : users) {
+            if(userName.equals(user.getUsername()))
+                return true;
+        }
+        return false;
+    }
+    public boolean foundPassword(String password,String userName){
+        for (User user : users) {
+            if(userName.equals(user.getUsername())){
+                if(password.equals(user.getPassword())){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public void buy(String animalName) {
         switch (animalName.toLowerCase(Locale.ROOT)) {
             case "chicken": {
