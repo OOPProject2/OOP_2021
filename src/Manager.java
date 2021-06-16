@@ -18,8 +18,8 @@ public class Manager {
         this.playerName = playerName;
     }
 
-    public void watering(int x , int y){
-         Well.watering(x,y);
+    public void planting(int x , int y){
+         Well.planting(x,y);
     }
 
     public static String getPlayerName() {
