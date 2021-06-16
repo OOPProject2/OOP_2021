@@ -22,6 +22,16 @@ public class Manager {
          Well.planting(x,y);
     }
 
+    public void fillingBucket(){
+        if (Well.getCurrentLevel() == 0){
+            Event.addEvent(Event.FILLING_BUCKET);
+            Log.fillingBucket(true);
+        } else{
+            System.out.println("bucket still has water");
+            Log.fillingBucket(false);
+        }
+    }
+
     public static String getPlayerName() {
         return playerName;
     }

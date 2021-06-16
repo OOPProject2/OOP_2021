@@ -18,7 +18,7 @@ public class Log {
         }
     }
 
-    public static void buyAnimalLog(String animalName, boolean condition,String reason) {
+    public static void buyAnimalLog(String animalName, boolean condition, String reason) {
         try {
             if (condition)
                 LOG.write("INFO : " + "animal buy, " + "name : " + animalName + "status : successful" + getTime());
@@ -31,7 +31,7 @@ public class Log {
         }
     }
 
-    public static void planting(int x, int y, int reasonCode){
+    public static void planting(int x, int y, int reasonCode) {
         try {
             switch (reasonCode) {
                 case 1: {
@@ -47,11 +47,31 @@ public class Log {
                     LOG.write("ALERT : planting attempt");
                 }
             }
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             System.out.println("ERROR : Writing to Log File");
             e.printStackTrace();
-            }
+        }
+    }
+
+    public static void fillingBucket(boolean statue){
+        try {
+            if (statue)
+            LOG.write("INFO : filling bucket attempt successful" + getTime());
+            else
+                LOG.write("ALERT : filling bucket attempt unsuccessful reason : bucket still has water" + getTime());
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
+    public static void bucketFilled(){
+        try {
+            LOG.write("INFO : bucket filled successful" + getTime());
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
     }
 
     private static String getTime() {

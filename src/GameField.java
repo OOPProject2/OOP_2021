@@ -10,6 +10,7 @@ public class GameField {
     }
     public static boolean planting(int x, int y){
         if (x > 6 || x < 1 || y > 6 || y < 1){
+            System.out.println("incorrect coordinates");
             Log.planting(x,y,2);
             return false;
         } else{

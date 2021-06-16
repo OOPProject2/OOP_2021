@@ -1,6 +1,6 @@
 public class Well {
-    public static final int MAX_GRASS = 5;
-    private static final int REFILLING_TIME = 3;
+    public static final int MAX_BUCKET_CAPACITY = 5;
+    public static final int REFILLING_TIME = 3;
     private static int currentLevel = 5;
 
     public static void planting(int x, int y) {
@@ -11,5 +11,13 @@ public class Well {
             if (GameField.planting(x, y))
                 currentLevel--;
         }
+    }
+
+    public static int getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public static void fillingBucket(){
+        currentLevel = MAX_BUCKET_CAPACITY;
     }
 }
