@@ -1,5 +1,7 @@
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class Manager {
@@ -10,6 +12,7 @@ public class Manager {
     private final ArrayList<WildAnimal> wildAnimals;
     private final ArrayList<Cat> cats;
     private final ArrayList<Dog> dogs;
+    private final ArrayList<Task> tasks = new ArrayList<>();
     private int coins;
     private static String playerName;
 
@@ -179,6 +182,30 @@ public class Manager {
                 System.out.println("animal not found");
                 Log.buyAnimalLog(animalName, false, "animal not found");
             }
+        }
+    }
+
+    public void showGame(){
+        System.out.println("Time : " + Event.getCurrentTime());
+        GameField.showGameField();
+        System.out.println("Farm Animals :::::");
+        for (FarmAnimal farmAnimal : farmAnimals) {
+            farmAnimal.showAnimal();
+        }
+        System.out.println("Wild Animals :::::");
+        for (WildAnimal wildAnimal : wildAnimals) {
+            wildAnimal.showAnimal();
+        }
+        System.out.println("Other Animals :::::");
+        for (Dog dog : dogs) {
+            dog.showAnimal();
+        }
+        for (Cat cat : cats) {
+            cat.showAnimal();
+        }
+        System.out.println("Tasks :::::");
+        for (Task task : tasks) {
+            task.showTask();
         }
     }
 }

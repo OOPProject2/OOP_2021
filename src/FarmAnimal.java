@@ -19,4 +19,15 @@ public class FarmAnimal extends Animal {
     public int getYLoc() {
         return super.getYLoc();
     }
+
+    @Override
+    public void showAnimal() {
+        System.out.print(getAnimalName() + " " + this.life + " ");
+        super.showAnimal();
+    }
+
+    @Override
+    public String getAnimalName() {
+        return super.getAnimalName();
+    }
 }

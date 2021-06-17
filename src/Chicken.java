@@ -10,4 +10,9 @@ public class Chicken extends FarmAnimal {
     public static int getChickensPrice() {
         return CHICKENS_PRICE;
     }
+
+    @Override
+    public String getAnimalName() {
+        return "Chicken";
+    }
 }

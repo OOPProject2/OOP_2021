@@ -18,6 +18,14 @@ public class Animal {
         //Must be overridden
     }
 
+    public void showAnimal(){
+        System.out.println("[" + getXLoc() + " " + getXLoc() + "]");
+    }
+
+    public String  getAnimalName(){
+        return "Animal";
+    }
+
     public int getXLoc() {
         return XLoc;
     }

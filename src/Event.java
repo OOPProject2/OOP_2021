@@ -46,4 +46,8 @@ public class Event {
         this.eventTime = eventTime;
         this.eventCode = eventCode;
     }
+
+    public static int getCurrentTime() {
+        return currentTime;
+    }
 }

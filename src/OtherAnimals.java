@@ -3,4 +3,10 @@ public class OtherAnimals extends Animal{
     public OtherAnimals(int price) {
         super(price, MOVE_PER_TIME_UNIT);
     }
+
+    @Override
+    public void showAnimal() {
+        System.out.print(getAnimalName() + " ");
+        super.showAnimal();
+    }
 }

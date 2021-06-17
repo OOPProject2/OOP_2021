@@ -5,4 +5,9 @@ public class Bear extends WildAnimal{
     public Bear() {
         super(BEAR_PRICE,BEAR_CAGE_LEVEL_REQUIRED,BEAR_MOVE_PER_TIME_UNIT);
     }
+
+    @Override
+    public String getAnimalName() {
+        return "Bear";
+    }
 }

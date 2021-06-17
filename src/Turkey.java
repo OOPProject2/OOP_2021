@@ -10,4 +10,9 @@ public class Turkey extends FarmAnimal {
     public static int getTurkeyPrice() {
         return TURKEY_PRICE;
     }
+
+    @Override
+    public String getAnimalName() {
+        return "Turkey";
+    }
 }

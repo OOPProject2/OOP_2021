@@ -9,4 +9,10 @@ public class Buffalo extends FarmAnimal {
     public static int getBuffaloPrice() {
         return BUFFALO_PRICE;
     }
+
+    @Override
+    public String getAnimalName() {
+        return "Buffalo";
+    }
+
 }

@@ -5,4 +5,9 @@ public class Tiger extends WildAnimal{
     public Tiger() {
         super(TIGER_PRICE, TIGER_CAGE_LEVEL_REQUIRED, TIGER_MOVE_PER_TIME_UNIT);
     }
+
+    @Override
+    public String getAnimalName() {
+        return "Tiger";
+    }
 }

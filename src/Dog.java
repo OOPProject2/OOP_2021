@@ -8,4 +8,9 @@ public class Dog extends OtherAnimals{
     public static int getDogPrice() {
         return DOG_PRICE;
     }
+
+    @Override
+    public String getAnimalName() {
+        return "Dog";
+    }
 }

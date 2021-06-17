@@ -5,4 +5,9 @@ public class Lion extends WildAnimal{
     public Lion() {
         super(LION_PRICE, LION_CAGE_LEVEL_REQUIRED,LION_MOVE_PER_TIME_UNIT);
     }
+
+    @Override
+    public String getAnimalName() {
+        return "Lion";
+    }
 }

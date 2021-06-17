@@ -18,4 +18,14 @@ public class GameField {
             return true;
         }
     }
+
+    public static void showGameField() {
+        System.out.println("Game Field");
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                System.out.print(gameField[i][j] + "  ");
+            }
+            System.out.println();
+        }
+    }
 }

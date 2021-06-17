@@ -6,4 +6,9 @@ public class Cat extends OtherAnimals{
     public static int getCatPrice() {
         return CAT_PRICE;
     }
+
+    @Override
+    public String getAnimalName() {
+        return "Cat";
+    }
 }
