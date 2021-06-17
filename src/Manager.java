@@ -5,6 +5,7 @@ import java.util.Locale;
 public class Manager {
     private final ArrayList<User> users;
     File userFile;
+    User user;
     private final ArrayList<FarmAnimal> farmAnimals;
     private final ArrayList<WildAnimal> wildAnimals;
     private final ArrayList<Cat> cats;
@@ -57,11 +58,48 @@ public class Manager {
         for (User user : users) {
             if(userName.equals(user.getUsername())){
                 if(password.equals(user.getPassword())){
+                    this.user=user;
                     return true;
                 }
             }
         }
         return false;
+    }
+    public boolean start(int level){
+        if(user.getMissionsPassed()+1<level){
+            return true;
+        }
+        return false;
+    }
+    public void pickup(int x,int y){
+        //TODO
+    }
+    public void well(){
+        //TODO
+    }
+    public void plant(int x,int y){
+        //TODO
+    }
+    public void build(String workShopName){
+        //TODO
+    }
+    public void work(String workShopName){
+        //TODO
+    }
+    public void turn(int numberOfTimeUnit){
+        //TODO
+    }
+    public void cage(int x,int y){
+        //TODO
+    }
+    public void truckLoad(String itemName){
+        //TODO
+    }
+    public void truckUnload(String itemName){
+        //TODO
+    }
+    public void truckGO(){
+        //TODO
     }
     public void buy(String animalName) {
         switch (animalName.toLowerCase(Locale.ROOT)) {

@@ -50,13 +50,17 @@ public class InputProcessor {
         System.out.println("menu page:");
         while (!logout){
             input=scan.nextLine();
-            if(InputCommands.START.getMatcher(input).matches()){
-
+            if((matcher1=InputCommands.START.getMatcher(input)).matches()){
+                if(manager.start(Integer.parseInt(matcher1.group(1)))){
+                    start();
+                }else System.out.println("this level is Locked for you");
             }else if(InputCommands.SETTINGS.getMatcher(input).matches()){
 
             }else if(InputCommands.LOGOUT.getMatcher(input).matches()){
                 logout=true;
-            }else
+            }else if(InputCommands.EXIT.getMatcher(input).matches()){
+                System.exit(-1);
+            }
                 System.err.println("Invalid input!!");
         }
         login();
@@ -67,27 +71,27 @@ public class InputProcessor {
         while (true){
             input=scan.nextLine();
             if((matcher1=InputCommands.BUY.getMatcher(input)).matches()){
-
+                manager.buy(matcher1.group(1));
             }else if((matcher1=InputCommands.PICKUP.getMatcher(input)).matches()){
-
+                manager.pickup(Integer.parseInt(matcher1.group(1)),Integer.parseInt(matcher1.group(2)));
             }else if(InputCommands.WELL.getMatcher(input).matches()){
-
+                manager.well();
             }else if((matcher1=InputCommands.PLANT.getMatcher(input)).matches()){
-
+                manager.plant(Integer.parseInt(matcher1.group(1)),Integer.parseInt(matcher1.group(2)));
             }else if((matcher1=InputCommands.BUILD.getMatcher(input)).matches()){
-
+                manager.build(matcher1.group(1));
             }else if((matcher1=InputCommands.WORK.getMatcher(input)).matches()){
-
+                manager.work(matcher1.group(1));
             }else if((matcher1=InputCommands.CAGE.getMatcher(input)).matches()){
-
+                manager.cage(Integer.parseInt(matcher1.group(1)),Integer.parseInt(matcher1.group(2)));
             }else if((matcher1=InputCommands.TURN.getMatcher(input)).matches()){
-
+                manager.turn(Integer.parseInt(matcher1.group(1)));
             }else if((matcher1=InputCommands.TRUCK_LOAD.getMatcher(input)).matches()){
-
+                manager.truckLoad(matcher1.group(1));
             }else if((matcher1=InputCommands.TRUCK_UNLOAD.getMatcher(input)).matches()){
-
-            }else if((matcher1=InputCommands.TRUCK_GO.getMatcher(input)).matches()){
-
+                manager.truckUnload(matcher1.group(1));
+            }else if(InputCommands.TRUCK_GO.getMatcher(input).matches()){
+                manager.truckGO();
             }else if(InputCommands.MENU.getMatcher(input).matches()){
                 menu();
             }else
