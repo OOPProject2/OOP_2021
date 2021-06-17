@@ -14,9 +14,9 @@ public class Manager {
     private static String playerName;
 
     public Manager(String playerName) {
-        users=new ArrayList<>();
-        userFile=new File("Users.txt");
-        User.readUsers(userFile,users);
+        users = new ArrayList<>();
+        userFile = new File("Users.txt");
+        User.readUsers(userFile, users);
         this.farmAnimals = new ArrayList<>();
         this.wildAnimals = new ArrayList<>();
         this.dogs = new ArrayList<>();
@@ -25,15 +25,15 @@ public class Manager {
         this.playerName = playerName;
     }
 
-    public void planting(int x , int y){
-         Well.planting(x,y);
+    public void planting(int x, int y) {
+        Well.planting(x, y);
     }
 
-    public void fillingBucket(){
-        if (Well.getCurrentLevel() == 0){
+    public void fillingBucket() {
+        if (Well.getCurrentLevel() == 0) {
             Event.addEvent(Event.FILLING_BUCKET);
             Log.fillingBucket(true);
-        } else{
+        } else {
             System.out.println("bucket still has water");
             Log.fillingBucket(false);
         }
@@ -42,65 +42,72 @@ public class Manager {
     public static String getPlayerName() {
         return playerName;
     }
-    public void creatAccountForUser(String userName,String password){
-        User user=new User(userName,password,0,200);
+
+    public void creatAccountForUser(String userName, String password) {
+        User user = new User(userName, password, 0, 200);
         users.add(user);
         user.appendToFile(userFile);
     }
-    public boolean foundUsername(String userName){
+
+    public boolean foundUsername(String userName) {
         for (User user : users) {
-            if(userName.equals(user.getUsername()))
+            if (userName.equals(user.getUsername()))
                 return true;
         }
         return false;
     }
-    public boolean foundPassword(String password,String userName){
+
+    public boolean foundPassword(String password, String userName) {
         for (User user : users) {
-            if(userName.equals(user.getUsername())){
-                if(password.equals(user.getPassword())){
-                    this.user=user;
+            if (userName.equals(user.getUsername())) {
+                if (password.equals(user.getPassword())) {
+                    this.user = user;
                     return true;
                 }
             }
         }
         return false;
     }
-    public boolean start(int level){
-        if(user.getMissionsPassed()+1<level){
+
+    public boolean start(int level) {
+        if (user.getMissionsPassed() + 1 < level) {
             return true;
         }
         return false;
     }
-    public void pickup(int x,int y){
+
+    public void pickup(int x, int y) {
         //TODO
     }
-    public void well(){
+
+    public void build(String workShopName) {
         //TODO
     }
-    public void plant(int x,int y){
+
+    public void work(String workShopName) {
         //TODO
     }
-    public void build(String workShopName){
+
+    public void turn(int numberOfTimeUnit) {
+        Event.turnTime(numberOfTimeUnit);
+    }
+
+    public void cage(int x, int y) {
         //TODO
     }
-    public void work(String workShopName){
+
+    public void truckLoad(String itemName) {
         //TODO
     }
-    public void turn(int numberOfTimeUnit){
+
+    public void truckUnload(String itemName) {
         //TODO
     }
-    public void cage(int x,int y){
+
+    public void truckGO() {
         //TODO
     }
-    public void truckLoad(String itemName){
-        //TODO
-    }
-    public void truckUnload(String itemName){
-        //TODO
-    }
-    public void truckGO(){
-        //TODO
-    }
+
     public void buy(String animalName) {
         switch (animalName.toLowerCase(Locale.ROOT)) {
             case "chicken": {
@@ -110,10 +117,10 @@ public class Manager {
                     farmAnimals.add(chicken);
                     System.out.println("Chicken added successfully at point x = " + chicken.getXLoc()
                             + " y = " + chicken.getYLoc());
-                    Log.buyAnimalLog("chicken", true,"");
+                    Log.buyAnimalLog("chicken", true, "");
                 } else {
                     System.out.println("not enough coins");
-                    Log.buyAnimalLog("chicken", false,"not enough coins");
+                    Log.buyAnimalLog("chicken", false, "not enough coins");
                 }
             }
             case "turkey": {
@@ -123,10 +130,10 @@ public class Manager {
                     farmAnimals.add(turkey);
                     System.out.println("Turkey added successfully at point x = " + turkey.getXLoc()
                             + " y = " + turkey.getYLoc());
-                    Log.buyAnimalLog("turkey",true,"");
+                    Log.buyAnimalLog("turkey", true, "");
                 } else {
                     System.out.println("not enough coins");
-                    Log.buyAnimalLog("turkey",false,"not enough coins");
+                    Log.buyAnimalLog("turkey", false, "not enough coins");
                 }
             }
             case "buffalo": {
@@ -136,10 +143,10 @@ public class Manager {
                     farmAnimals.add(buffalo);
                     System.out.println("Buffalo added successfully at point x = " + buffalo.getXLoc()
                             + " y = " + buffalo.getYLoc());
-                    Log.buyAnimalLog("buffalo",true,"");
+                    Log.buyAnimalLog("buffalo", true, "");
                 } else {
                     System.out.println("not enough coins");
-                    Log.buyAnimalLog("buffalo",false,"not enough coins");
+                    Log.buyAnimalLog("buffalo", false, "not enough coins");
                 }
             }
             case "dog": {
@@ -149,10 +156,10 @@ public class Manager {
                     dogs.add(dog);
                     System.out.println("Dog added successfully at point x = " + dog.getXLoc()
                             + " y = " + dog.getYLoc());
-                    Log.buyAnimalLog("dog",true,"");
+                    Log.buyAnimalLog("dog", true, "");
                 } else {
                     System.out.println("not enough coins");
-                    Log.buyAnimalLog("dog",false,"not enough coins");
+                    Log.buyAnimalLog("dog", false, "not enough coins");
                 }
             }
             case "cat": {
@@ -162,15 +169,15 @@ public class Manager {
                     cats.add(cat);
                     System.out.println("Cat added successfully at point x = " + cat.getXLoc()
                             + " y = " + cat.getYLoc());
-                    Log.buyAnimalLog("cat",true,"");
+                    Log.buyAnimalLog("cat", true, "");
                 } else {
                     System.out.println("not enough coins");
-                    Log.buyAnimalLog("cat",false,"not enough coins");
+                    Log.buyAnimalLog("cat", false, "not enough coins");
                 }
             }
             default: {
                 System.out.println("animal not found");
-                Log.buyAnimalLog(animalName,false,"animal not found");
+                Log.buyAnimalLog(animalName, false, "animal not found");
             }
         }
     }

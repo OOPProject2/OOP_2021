@@ -17,7 +17,7 @@ public class Event {
         }
     }
 
-    public void turnTime(int turnAmount) {
+    public static void turnTime(int turnAmount) {
         currentTime += turnAmount;
         check();
     }
@@ -41,6 +41,7 @@ public class Event {
             }
         }
     }
+
     public Event(int eventTime, int eventCode) {
         this.eventTime = eventTime;
         this.eventCode = eventCode;

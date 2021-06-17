@@ -53,10 +53,10 @@ public class Log {
         }
     }
 
-    public static void fillingBucket(boolean statue){
+    public static void fillingBucket(boolean statue) {
         try {
             if (statue)
-            LOG.write("INFO : filling bucket attempt successful" + getTime());
+                LOG.write("INFO : filling bucket attempt successful" + getTime());
             else
                 LOG.write("ALERT : filling bucket attempt unsuccessful reason : bucket still has water" + getTime());
         } catch (IOException e) {
@@ -65,7 +65,7 @@ public class Log {
         }
     }
 
-    public static void bucketFilled(){
+    public static void bucketFilled() {
         try {
             LOG.write("INFO : bucket filled successful" + getTime());
         } catch (IOException e) {
