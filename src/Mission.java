@@ -6,7 +6,7 @@ public class Mission {
     private int level;
     Scanner input = new Scanner(System.in);
     String path = input.next();
-    File file = new File("C:\\Users\\ahmadzade\\project\\fortesting");
+    File file = new File("C:\\Users\\ahmadzade\\project\\missionReader");
     public boolean checkFile(File file){
         if(!file.exists()){
             System.out.println("file path you entered does not exist");
