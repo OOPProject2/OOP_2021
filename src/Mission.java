@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+//for try to update
 public class Mission {
     private int level;
     Scanner input = new Scanner(System.in);
