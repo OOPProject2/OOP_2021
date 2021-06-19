@@ -5,4 +5,9 @@ public class Feather extends Product{
     public Feather() {
         super(FEATHER_PRICE, REQUIRED_SPACE, TIME_UNIT_TO_GET);
     }
+
+    @Override
+    public String getName() {
+        return "Feather";
+    }
 }

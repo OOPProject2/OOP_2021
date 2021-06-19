@@ -5,4 +5,9 @@ public class Fabric extends Product{
     public Fabric() {
         super(FABRIC_PRICE, REQUIRED_SPACE, TIME_UNIT_TO_GET);
     }
+
+    @Override
+    public String getName() {
+        return "Fabric";
+    }
 }

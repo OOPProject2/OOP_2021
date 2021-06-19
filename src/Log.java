@@ -84,6 +84,42 @@ public class Log {
         }
     }
 
+    public static void turnTime(int timeUnit){
+        try {
+            LOG.write("INFO : time turned bu amount " + timeUnit + getTime());
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
+    public static void pickup(String name,int x,int y,boolean statue){
+        try {
+            if (statue){
+                LOG.write("INFO : " + name + " picked up at coordinates (" + x + "," + y + ")" + getTime());
+            } else
+            LOG.write("INFO : pickingUp attempt unsuccessful at coordinates(" + x + "," + y + ") " +
+                    "reason : nothing to pickup" + getTime());
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
+    public static void moveToWareHouse(String name, boolean statue){
+        try {
+            if (statue)
+                LOG.write("INFO : " + name + " moved to warehouse successfully" + getTime());
+            else
+                LOG.write("INFO move to warehouse attempt unsuccessful: " + name + " cannot be moved " +
+                        "to warehouse reason : not enough space" + getTime());
+
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
     private static String getTime() {
         return " ~Time : " + Calendar.getInstance().getTime();
     }

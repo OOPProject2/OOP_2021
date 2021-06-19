@@ -5,4 +5,9 @@ public class PackedMilk extends Product{
     public PackedMilk() {
         super(PACKED_MILK_PRICE, REQUIRED_SPACE, TIME_UNIT_TO_GET);
     }
+
+    @Override
+    public String getName() {
+        return "PackedMilk";
+    }
 }

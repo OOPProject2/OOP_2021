@@ -18,8 +18,13 @@ public class Event {
     }
 
     public static void turnTime(int turnAmount) {
-        currentTime += turnAmount;
-        check();
+        Log.turnTime(turnAmount);
+        while (turnAmount > 0){
+            currentTime++;
+            check();
+            turnAmount--;
+        }
+
     }
 
     private static void check() {

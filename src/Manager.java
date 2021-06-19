@@ -72,14 +72,32 @@ public class Manager {
     }
 
     public boolean start(int level) {
-        if (user.getMissionsPassed() + 1 < level) {
+        if (user.getMissionsPassed() + 1 >= level) {
             return true;
         }
         return false;
     }
 
     public void pickup(int x, int y) {
-        //TODO
+        boolean found = false;
+        if (x < 1 || x > 6 || y < 1 || y > 6) {
+            System.out.println("incorrect coordinates");
+            return;
+        }
+        for (Product product : products) {
+            if (product.getProductXLocInGameField() == x && product.getProductYLocInGameField() == y) {
+                found = true;
+                if (WareHouse.addItem(product)) {
+                    product.collect();
+                    Log.pickup(product.getName(), x, y, true);
+                    System.out.println(product.getName() + "collected");
+                }
+            }
+        }
+        if (!found) {
+            System.out.println("there is no products at this location");
+            Log.pickup("", x, y, false);
+        }
     }
 
     public void build(String workShopName) {

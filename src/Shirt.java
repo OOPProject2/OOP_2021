@@ -5,4 +5,9 @@ public class Shirt extends Product{
     public Shirt() {
         super(SHIRT_PRICE, REQUIRED_SPACE, TIME_UNIT_TO_GET);
     }
+
+    @Override
+    public String getName() {
+        return "Shirt";
+    }
 }

@@ -5,4 +5,9 @@ public class Flour extends Product{
     public Flour() {
         super(FLOUR_PRICE, REQUIRED_SPACE, TIME_UNIT_TO_GET);
     }
+
+    @Override
+    public String getName() {
+        return "Flour";
+    }
 }

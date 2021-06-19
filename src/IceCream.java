@@ -6,4 +6,9 @@ public class IceCream extends Product {
     public IceCream() {
         super(ICE_CREAM_PRICE, REQUIRED_SPACE, TIME_UNIT_TO_GET);
     }
+
+    @Override
+    public String getName() {
+        return "IceCream";
+    }
 }

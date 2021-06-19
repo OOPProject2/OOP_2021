@@ -5,4 +5,9 @@ public class Egg extends Product{
     public Egg() {
         super(EGG_PRICE, REQUIRED_SPACE, TIME_UNIT_TO_GET);
     }
+
+    @Override
+    public String getName() {
+        return "Egg";
+    }
 }

@@ -29,4 +29,17 @@ public class Product {
     public int getProductYLocInGameField() {
         return productYLocInGameField;
     }
+
+    public String getName(){
+        return "Product";
+    }
+
+    public void collect(){
+        this.productYLocInGameField = 0;
+        this.productXLocInGameField = 0;
+    }
+
+    public int getREQUIRED_SPACE() {
+        return REQUIRED_SPACE;
+    }
 }

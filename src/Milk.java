@@ -5,4 +5,9 @@ public class Milk extends Product{
     public Milk() {
         super(MILK_PRICE, REQUIRED_SPACE, TIME_UNIT_TO_GET);
     }
+
+    @Override
+    public String getName() {
+        return "Milk";
+    }
 }

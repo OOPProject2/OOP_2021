@@ -3,6 +3,7 @@ public class WildAnimal extends Animal {
     private static final int TIME_UNIT_TO_ESCAPE = 5;
     private int currentTimeUnitToEscape;
     private int currentLevel;
+    private static final int SPACE_REQUIRED = 15;
 
     public WildAnimal(int price, int CAGE_LEVEL_REQUIRED, int movePerTimeUnit) {
         super(price, movePerTimeUnit);
@@ -19,5 +20,9 @@ public class WildAnimal extends Animal {
     @Override
     public String getAnimalName() {
         return super.getAnimalName();
+    }
+
+    public static int getSpaceRequired() {
+        return SPACE_REQUIRED;
     }
 }
