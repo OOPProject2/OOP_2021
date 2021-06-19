@@ -13,4 +13,9 @@ public class Dog extends OtherAnimals{
     public String getAnimalName() {
         return "Dog";
     }
+
+    @Override
+    protected void Movement() {
+        super.Movement(MOVE_PER_TIME_UNIT);
+    }
 }

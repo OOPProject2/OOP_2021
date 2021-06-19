@@ -74,6 +74,16 @@ public class Log {
         }
     }
 
+    public static void animalMove(String animalName, int oldX, int oldY, int newX, int newY) {
+        try {
+            LOG.write("INFO : animal " + animalName + "moved from (" + oldX + "," + oldY + ")to (" +
+                    newX + "," + newY + ")" + getTime());
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
     private static String getTime() {
         return " ~Time : " + Calendar.getInstance().getTime();
     }

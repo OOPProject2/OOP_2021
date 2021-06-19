@@ -1,7 +1,5 @@
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Locale;
 
 public class Manager {
@@ -13,6 +11,7 @@ public class Manager {
     private final ArrayList<Cat> cats;
     private final ArrayList<Dog> dogs;
     private final ArrayList<Task> tasks = new ArrayList<>();
+    private static final ArrayList<Product> products = new ArrayList<>();
     private int coins;
     private static String playerName;
 
@@ -185,7 +184,7 @@ public class Manager {
         }
     }
 
-    public void showGame(){
+    public void showGame() {
         System.out.println("Time : " + Event.getCurrentTime());
         GameField.showGameField();
         System.out.println("Farm Animals :::::");
@@ -207,5 +206,36 @@ public class Manager {
         for (Task task : tasks) {
             task.showTask();
         }
+    }
+
+    public static char closestProduct(int x, int y) {
+        double distance = 10000;
+        int closestProductX = x;
+        int closestProductY = y;
+        for (Product product : products) {
+            if (!product.isCollected()) {
+                int dist = (x - product.getProductXLocInGameField()) * (x - product.getProductXLocInGameField())
+                        + (y - product.getProductYLocInGameField()) * (y - product.getProductYLocInGameField());
+                if (dist < distance * distance) {
+                    distance = Math.sqrt(dist);
+                    closestProductX = product.getProductXLocInGameField();
+                    closestProductY = product.getProductYLocInGameField();
+                }
+            }
+        }
+
+        if (Math.abs(x - closestProductX) > Math.abs(y - closestProductY)) {
+            if (x < closestProductX)
+                return 'E';
+            if (x > closestProductX)
+                return 'W';
+        } else if (Math.abs(x - closestProductX) < Math.abs(y - closestProductY)) {
+            if (y < closestProductY)
+                return 'S';
+            if (y > closestProductY)
+                return 'N';
+        } else if (Math.abs(x - closestProductX) == 0 && Math.abs(y - closestProductY) == 0)
+            return 'O';
+        return 'O';
     }
 }

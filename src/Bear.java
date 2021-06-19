@@ -10,4 +10,9 @@ public class Bear extends WildAnimal{
     public String getAnimalName() {
         return "Bear";
     }
+
+    @Override
+    protected void Movement() {
+        super.Movement(BEAR_MOVE_PER_TIME_UNIT);
+    }
 }

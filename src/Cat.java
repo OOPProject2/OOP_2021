@@ -11,4 +11,26 @@ public class Cat extends OtherAnimals{
     public String getAnimalName() {
         return "Cat";
     }
+
+    @Override
+    protected void Movement() {
+        char movementDirection = Manager.closestProduct(getXLoc(),getXLoc());
+        switch (movementDirection) {
+            case 'N': {
+                move('N', MOVE_PER_TIME_UNIT);
+            }
+            case 'E': {
+                move('E', MOVE_PER_TIME_UNIT);
+            }
+            case 'W': {
+                move('W', MOVE_PER_TIME_UNIT);
+            }
+            case 'S': {
+                move('S', MOVE_PER_TIME_UNIT);
+            }
+            case 'O': {
+                break;
+            }
+        }
+    }
 }

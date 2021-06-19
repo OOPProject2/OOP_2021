@@ -14,15 +14,66 @@ public class Animal {
         this.MOVE_PER_TIME_UNIT = MOVE_PER_TIME_UNIT;
     }
 
-    private void Movement() {
-        //Must be overridden
+    protected void Movement(){
     }
 
-    public void showAnimal(){
+    protected void Movement(int length) {
+        boolean exit = false;
+        while (!exit) {
+            Random rand = new Random();
+            int movementDirection = rand.nextInt(4);
+            switch (movementDirection) {
+                case 0: {
+                    if (move('N', length))
+                        exit = true;
+                }
+                case 1: {
+                    if (move('E', length))
+                        exit = true;
+                }
+                case 2: {
+                    if (move('S', length))
+                        exit = true;
+                }
+                case 3: {
+                    if (move('W', length))
+                        exit = true;
+                }
+            }
+        }
+    }
+
+    protected boolean move(char direction, int length) {
+        switch (direction) {
+            case 'W':
+                if (XLoc > length) {
+                    this.moveLeft(length);
+                    return true;
+                }
+            case 'E':
+                if (XLoc < 7 - length) {
+                    this.moveRight(length);
+                    return true;
+                }
+            case 'N':
+                if (YLoc > length) {
+                    this.moveUp(length);
+                    return true;
+                }
+            case 'S':
+                if (YLoc < 7 - length) {
+                    this.moveDown(length);
+                    return true;
+                }
+        }
+        return false;
+    }
+
+    public void showAnimal() {
         System.out.println("[" + getXLoc() + " " + getXLoc() + "]");
     }
 
-    public String  getAnimalName(){
+    public String getAnimalName() {
         return "Animal";
     }
 
@@ -32,5 +83,25 @@ public class Animal {
 
     public int getYLoc() {
         return YLoc;
+    }
+
+    private void moveLeft(int length) {
+        this.XLoc -= length;
+        Log.animalMove(getAnimalName(), XLoc + length, YLoc, XLoc, YLoc);
+    }
+
+    private void moveRight(int length) {
+        this.XLoc += length;
+        Log.animalMove(getAnimalName(), XLoc - length, YLoc, XLoc, YLoc);
+    }
+
+    private void moveUp(int length) {
+        this.YLoc -= length;
+        Log.animalMove(getAnimalName(), XLoc, YLoc + length, XLoc, YLoc);
+    }
+
+    private void moveDown(int length) {
+        this.YLoc += length;
+        Log.animalMove(getAnimalName(), XLoc, YLoc - length, XLoc, YLoc);
     }
 }
