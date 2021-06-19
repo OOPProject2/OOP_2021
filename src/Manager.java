@@ -90,12 +90,22 @@ public class Manager {
                 if (WareHouse.addItem(product)) {
                     product.collect();
                     Log.pickup(product.getName(), x, y, true);
-                    System.out.println(product.getName() + "collected");
+                    System.out.println(product.getName() + " collected and moved to warehouse");
+                }
+            }
+        }
+        for (WildAnimal wildAnimal : wildAnimals) {
+            if (wildAnimal.getXLoc() == x && wildAnimal.getYLoc() == y){
+                found = true;
+                if (WareHouse.addItem(wildAnimal)){
+                    wildAnimal.store();
+                    Log.pickup(wildAnimal.getAnimalName(), x, y, true);
+                    System.out.println(wildAnimal.getAnimalName() + " collected and moved to warehouse");
                 }
             }
         }
         if (!found) {
-            System.out.println("there is no products at this location");
+            System.out.println("there is no products  or fully caged wild animals at this location");
             Log.pickup("", x, y, false);
         }
     }
@@ -113,7 +123,17 @@ public class Manager {
     }
 
     public void cage(int x, int y) {
-        //TODO
+        boolean found = false;
+        for (WildAnimal wildAnimal : wildAnimals) {
+            if (wildAnimal.getXLoc() == x && wildAnimal.getYLoc() == y){
+                found = true;
+                wildAnimal.cage();
+            }
+        }
+        if (!found){
+            System.out.println("there is no wildAnimal at this coordinates");
+            Log.cage("WildAnimal", x, y, 3);
+        }
     }
 
     public void truckLoad(String itemName) {

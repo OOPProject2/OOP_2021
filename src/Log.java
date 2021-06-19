@@ -106,14 +106,34 @@ public class Log {
         }
     }
 
-    public static void moveToWareHouse(String name, boolean statue){
+    public static void moveToWareHouse(String name, int statue){
         try {
-            if (statue)
+            if (statue == 1)
                 LOG.write("INFO : " + name + " moved to warehouse successfully" + getTime());
-            else
-                LOG.write("INFO move to warehouse attempt unsuccessful: " + name + " cannot be moved " +
+            else if (statue == 2)
+                LOG.write("ALERT  : move to warehouse attempt unsuccessful: " + name + " cannot be moved " +
                         "to warehouse reason : not enough space" + getTime());
+            else if (statue == 3)
+                LOG.write("ALERT : move to warehouse attempt unsuccessful: " + name + " cannot be moved " +
+                        "to warehouse reason : wild animal is not in max cage level" + getTime());
 
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
+    public static void cage(String animalName,int x, int y, int statue){
+        try {
+            if (statue == 1)
+                LOG.write("INFO : attempt to cage a " + animalName + "at coordinates(" + x + "," + y + ")"
+                       + " successful" + getTime());
+            else if (statue == 2)
+                LOG.write("INFO : attempt to cage a " + animalName + "at coordinates(" + x + "," + y + ")"
+                        + "unsuccessful reason : animal is already in max level of cage" + getTime());
+            else if (statue == 3)
+                LOG.write("INFO : attempt to cage a wildAnimal at coordinates(" + x + "," + y + ")"
+                        + "unsuccessful reason : animal not found" + getTime());
         } catch (IOException e) {
             System.out.println("ERROR : Writing to Log File");
             e.printStackTrace();

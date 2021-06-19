@@ -104,4 +104,12 @@ public class Animal {
         this.YLoc += length;
         Log.animalMove(getAnimalName(), XLoc, YLoc - length, XLoc, YLoc);
     }
+
+    protected void setXLoc(int XLoc) {
+        this.XLoc = XLoc;
+    }
+
+    protected void setYLoc(int YLoc) {
+        this.YLoc = YLoc;
+    }
 }
