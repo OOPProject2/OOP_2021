@@ -21,6 +21,7 @@ public enum InputCommands {
     TRUCK_LOAD("(?i)\\s*truck\\s+load\\s+(\\w+)\\s*"),
     TRUCK_UNLOAD("(?i)\\s*truck\\s+unload\\s+(\\w+)\\s*"),
     TRUCK_GO("(?i)\\s*truck\\s+go\\s*"),
+    INQUIRY("(?i)\\s*inquiry\\s*"),
     MENU("(?i)\\s*menu\\s*"),
     USER("User{username='(\\S+)', password='(\\S+)', missionsPassed=(\\d+), coinsForNextMission=(\\d+)}");
 
