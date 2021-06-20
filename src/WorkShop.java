@@ -6,4 +6,8 @@ public class WorkShop {
         this.BUILD_COST = BUILD_COST;
         this.PRODUCE_TIME = PRODUCE_TIME;
     }
+
+    public String getWorkShopName() {
+        return "WorkShop";
+    }
 }

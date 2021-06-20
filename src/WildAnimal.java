@@ -26,14 +26,14 @@ public class WildAnimal extends Animal {
         return SPACE_REQUIRED;
     }
 
-    public void cage(){
-        if (!isFullyCaged()){
+    public void cage() {
+        if (!isFullyCaged()) {
             currentLevel++;
-            Log.cage(this.getAnimalName(),this.getXLoc(),this.getYLoc(),1);
+            Log.cage(this.getAnimalName(), this.getXLoc(), this.getYLoc(), 1);
             System.out.println("animal cage level increased successfully");
         } else {
             System.out.println("animal is in max cage level");
-            Log.cage(this.getAnimalName(),this.getXLoc(),this.getYLoc(),2);
+            Log.cage(this.getAnimalName(), this.getXLoc(), this.getYLoc(), 2);
         }
     }
 
@@ -42,7 +42,7 @@ public class WildAnimal extends Animal {
         this.setYLoc(0);
     }
 
-    public boolean isFullyCaged(){
+    public boolean isFullyCaged() {
         return currentLevel == CAGE_LEVEL_REQUIRED;
     }
 }

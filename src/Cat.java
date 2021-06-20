@@ -1,7 +1,9 @@
-public class Cat extends OtherAnimals{
+public class Cat extends OtherAnimals {
     private static final int CAT_PRICE = 150;
 
-    public Cat() { super(CAT_PRICE); }
+    public Cat() {
+        super(CAT_PRICE);
+    }
 
     public static int getCatPrice() {
         return CAT_PRICE;
@@ -14,7 +16,7 @@ public class Cat extends OtherAnimals{
 
     @Override
     protected void Movement() {
-        char movementDirection = Manager.closestProduct(getXLoc(),getXLoc());
+        char movementDirection = Manager.closestProduct(getXLoc(), getXLoc());
         switch (movementDirection) {
             case 'N': {
                 move('N', MOVE_PER_TIME_UNIT);

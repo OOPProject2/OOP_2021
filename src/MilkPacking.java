@@ -1,4 +1,4 @@
-public class MilkPacking extends WorkShop{
+public class MilkPacking extends WorkShop {
     public static final int MILK_PACKING_BUILD_COST = 400;
     public static final int MILK_PACKING_PRODUCE_TIME = 6;
     private static final String PRODUCT = "PackedMilk";
@@ -6,5 +6,10 @@ public class MilkPacking extends WorkShop{
 
     public MilkPacking() {
         super(MILK_PACKING_BUILD_COST, MILK_PACKING_PRODUCE_TIME);
+    }
+
+    @Override
+    public String getWorkShopName() {
+        return "MilkPacking";
     }
 }

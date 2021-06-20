@@ -84,7 +84,7 @@ public class Log {
         }
     }
 
-    public static void turnTime(int timeUnit){
+    public static void turnTime(int timeUnit) {
         try {
             LOG.write("INFO : time turned bu amount " + timeUnit + getTime());
         } catch (IOException e) {
@@ -93,20 +93,20 @@ public class Log {
         }
     }
 
-    public static void pickup(String name,int x,int y,boolean statue){
+    public static void pickup(String name, int x, int y, boolean statue) {
         try {
-            if (statue){
+            if (statue) {
                 LOG.write("INFO : " + name + " picked up at coordinates (" + x + "," + y + ")" + getTime());
             } else
-            LOG.write("INFO : pickingUp attempt unsuccessful at coordinates(" + x + "," + y + ") " +
-                    "reason : nothing to pickup" + getTime());
+                LOG.write("INFO : pickingUp attempt unsuccessful at coordinates(" + x + "," + y + ") " +
+                        "reason : nothing to pickup" + getTime());
         } catch (IOException e) {
             System.out.println("ERROR : Writing to Log File");
             e.printStackTrace();
         }
     }
 
-    public static void moveToWareHouse(String name, int statue){
+    public static void moveToWareHouse(String name, int statue) {
         try {
             if (statue == 1)
                 LOG.write("INFO : " + name + " moved to warehouse successfully" + getTime());
@@ -123,17 +123,36 @@ public class Log {
         }
     }
 
-    public static void cage(String animalName,int x, int y, int statue){
+    public static void cage(String animalName, int x, int y, int statue) {
         try {
             if (statue == 1)
                 LOG.write("INFO : attempt to cage a " + animalName + "at coordinates(" + x + "," + y + ")"
-                       + " successful" + getTime());
+                        + " successful" + getTime());
             else if (statue == 2)
                 LOG.write("INFO : attempt to cage a " + animalName + "at coordinates(" + x + "," + y + ")"
                         + "unsuccessful reason : animal is already in max level of cage" + getTime());
             else if (statue == 3)
                 LOG.write("INFO : attempt to cage a wildAnimal at coordinates(" + x + "," + y + ")"
                         + "unsuccessful reason : animal not found" + getTime());
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
+    public static void Build(String workShopName, int statue) {
+        try {
+            if (statue == 1)
+                LOG.write("INFO : attempt to build " + workShopName + " unsuccessful reason : workshop already exist"
+                        + getTime());
+            else if (statue == 2)
+                LOG.write("INFO : attempt to build " + workShopName + " unsuccessful reason : not enough coins"
+                        + getTime());
+            else if (statue == 3)
+                LOG.write("INFO : attempt to build " + workShopName + " unsuccessful reason : workshop not found"
+                        + getTime());
+            else if (statue == 4)
+                LOG.write("INFO : attempt to build " + workShopName + " successful" + getTime());
         } catch (IOException e) {
             System.out.println("ERROR : Writing to Log File");
             e.printStackTrace();

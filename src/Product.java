@@ -18,7 +18,7 @@ public class Product {
         productYLocInGameField = random.nextInt(6) + 1;
     }
 
-    public boolean isCollected(){
+    public boolean isCollected() {
         return productXLocInGameField == 0 && productYLocInGameField == 0;
     }
 
@@ -30,11 +30,11 @@ public class Product {
         return productYLocInGameField;
     }
 
-    public String getName(){
+    public String getName() {
         return "Product";
     }
 
-    public void collect(){
+    public void collect() {
         this.productYLocInGameField = 0;
         this.productXLocInGameField = 0;
     }

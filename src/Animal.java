@@ -14,7 +14,7 @@ public class Animal {
         this.MOVE_PER_TIME_UNIT = MOVE_PER_TIME_UNIT;
     }
 
-    protected void Movement(){
+    protected void Movement() {
     }
 
     protected void Movement(int length) {

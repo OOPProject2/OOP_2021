@@ -1,4 +1,4 @@
-public class Dog extends OtherAnimals{
+public class Dog extends OtherAnimals {
     private static final int DOG_PRICE = 100;
 
     public Dog() {

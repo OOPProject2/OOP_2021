@@ -92,12 +92,11 @@ public class InputProcessor {
                 manager.truckUnload(matcher1.group(1));
             } else if (InputCommands.TRUCK_GO.getMatcher(input).matches()) {
                 manager.truckGO();
-            } else if(InputCommands.INQUIRY.getMatcher(input).matches()){
+            } else if (InputCommands.INQUIRY.getMatcher(input).matches()) {
                 manager.showGame();
             } else if (InputCommands.MENU.getMatcher(input).matches()) {
                 menu();
-            }
-                else System.err.println("Invalid input!!");
+            } else System.err.println("Invalid input!!");
         }
     }
 }

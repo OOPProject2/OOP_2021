@@ -9,7 +9,7 @@ public class Task {
         this.completedAmount = 0;
     }
 
-    public void showTask(){
-        System.out.println(taskProduct + " "  + completedAmount + "/" + taskAmount);
+    public void showTask() {
+        System.out.println(taskProduct + " " + completedAmount + "/" + taskAmount);
     }
 }

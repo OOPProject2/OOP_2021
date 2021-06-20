@@ -6,6 +6,7 @@ public class Buffalo extends FarmAnimal {
     public Buffalo() {
         super(BUFFALO_PRODUCT, BUFFALO_PRODUCING_TIME, BUFFALO_PRICE);
     }
+
     public static int getBuffaloPrice() {
         return BUFFALO_PRICE;
     }

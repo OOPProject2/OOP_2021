@@ -12,6 +12,7 @@ public class Manager {
     private final ArrayList<Dog> dogs;
     private final ArrayList<Task> tasks = new ArrayList<>();
     private static final ArrayList<Product> products = new ArrayList<>();
+    private static final ArrayList<WorkShop> workShops = new ArrayList<>();
     private int coins;
     private static String playerName;
 
@@ -95,9 +96,9 @@ public class Manager {
             }
         }
         for (WildAnimal wildAnimal : wildAnimals) {
-            if (wildAnimal.getXLoc() == x && wildAnimal.getYLoc() == y){
+            if (wildAnimal.getXLoc() == x && wildAnimal.getYLoc() == y) {
                 found = true;
-                if (WareHouse.addItem(wildAnimal)){
+                if (WareHouse.addItem(wildAnimal)) {
                     wildAnimal.store();
                     Log.pickup(wildAnimal.getAnimalName(), x, y, true);
                     System.out.println(wildAnimal.getAnimalName() + " collected and moved to warehouse");
@@ -111,7 +112,80 @@ public class Manager {
     }
 
     public void build(String workShopName) {
-        //TODO
+        for (WildAnimal wildAnimal : wildAnimals) {
+            if (wildAnimal.getAnimalName().equalsIgnoreCase(workShopName)) {
+                System.out.println("WorkShop already exist");
+                Log.Build(workShopName,1);
+                return;
+            }
+        }
+        switch (workShopName.toLowerCase(Locale.ROOT)) {
+            case "bakery": {
+                if (coins >= Bakery.BAKERY_BUILD_COST) {
+                    workShops.add(new Bakery());
+                    coins -= Bakery.BAKERY_BUILD_COST;
+                    System.out.println("Bakery built successfully");
+                    Log.Build(workShopName,4);
+                } else {
+                    System.out.println("not enough coins");
+                    Log.Build(workShopName,2);
+                }
+            }
+            case "ice" + "cream" + "shop": {
+                if (coins >= IceCreamShop.ICE_CREAM_SHOP_BUILD_COST) {
+                    workShops.add(new IceCreamShop());
+                    coins -= IceCreamShop.ICE_CREAM_SHOP_BUILD_COST;
+                    System.out.println("IceCreamShop built successfully");
+                    Log.Build(workShopName,4);
+                } else {
+                    System.out.println("not enough coins");
+                }
+            }
+            case "milk" + "packing": {
+                if (coins >= MilkPacking.MILK_PACKING_BUILD_COST) {
+                    workShops.add(new MilkPacking());
+                    coins -= MilkPacking.MILK_PACKING_BUILD_COST;
+                    System.out.println("MilkPacking built successfully");
+                    Log.Build(workShopName,4);
+                } else {
+                    System.out.println("not enough coins");
+                }
+            }
+            case "mill": {
+                if (coins >= Mill.MILL_BUILD_COST) {
+                    workShops.add(new Mill());
+                    coins -= Mill.MILL_BUILD_COST;
+                    System.out.println("Mill built successfully");
+                    Log.Build(workShopName,4);
+                } else {
+                    System.out.println("not enough coins");
+                }
+            }
+            case "tailor": {
+                if (coins >= Tailor.TAILOR_BUILD_COST) {
+                    workShops.add(new Tailor());
+                    coins -= Tailor.TAILOR_BUILD_COST;
+                    System.out.println("Tailor built successfully");
+                    Log.Build(workShopName,4);
+                } else {
+                    System.out.println("not enough coins");
+                }
+            }
+            case "weaver": {
+                if (coins >= Weaver.WEAVER_BUILD_COST) {
+                    workShops.add(new Weaver());
+                    coins -= Weaver.WEAVER_BUILD_COST;
+                    System.out.println("Weaver built successfully");
+                    Log.Build(workShopName,4);
+                } else {
+                    System.out.println("not enough coins");
+                }
+            }
+            default: {
+                System.out.println("workshop not found");
+                Log.Build(workShopName,3);
+            }
+        }
     }
 
     public void work(String workShopName) {
@@ -125,12 +199,12 @@ public class Manager {
     public void cage(int x, int y) {
         boolean found = false;
         for (WildAnimal wildAnimal : wildAnimals) {
-            if (wildAnimal.getXLoc() == x && wildAnimal.getYLoc() == y){
+            if (wildAnimal.getXLoc() == x && wildAnimal.getYLoc() == y) {
                 found = true;
                 wildAnimal.cage();
             }
         }
-        if (!found){
+        if (!found) {
             System.out.println("there is no wildAnimal at this coordinates");
             Log.cage("WildAnimal", x, y, 3);
         }

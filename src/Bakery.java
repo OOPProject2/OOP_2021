@@ -1,4 +1,4 @@
-public class Bakery extends WorkShop{
+public class Bakery extends WorkShop {
     public static final int BAKERY_BUILD_COST = 250;
     public static final int BAKERY_PRODUCE_TIME = 5;
     private static final String PRODUCT = "Bread";
@@ -6,5 +6,10 @@ public class Bakery extends WorkShop{
 
     public Bakery() {
         super(BAKERY_BUILD_COST, BAKERY_PRODUCE_TIME);
+    }
+
+    @Override
+    public String getWorkShopName() {
+        return "Bakery";
     }
 }

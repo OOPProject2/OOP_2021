@@ -40,39 +40,38 @@ public class User {
     }
 
 
-    public void appendToFile(File userFile){
+    public void appendToFile(File userFile) {
         try {
-            FileWriter fw =new FileWriter(userFile,true);
-            BufferedWriter bw=new BufferedWriter(fw);
+            FileWriter fw = new FileWriter(userFile, true);
+            BufferedWriter bw = new BufferedWriter(fw);
             fw.append(toString());
             bw.close();
             fw.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void readUsers(File userFile, ArrayList<User> users){
+    public static void readUsers(File userFile, ArrayList<User> users) {
         try {
-            FileReader fr =new FileReader(userFile);
-            BufferedReader br=new BufferedReader(fr);
+            FileReader fr = new FileReader(userFile);
+            BufferedReader br = new BufferedReader(fr);
             String input;
             Matcher matcher;
-            while ( (input=br.readLine())!=null){
-                matcher=InputCommands.USER.getMatcher(input);
-                if(matcher.matches()){
-                    users.add(new User(matcher.group(1),matcher.group(2),Integer.parseInt(matcher.group(3)),Integer.parseInt(matcher.group(4))));
+            while ((input = br.readLine()) != null) {
+                matcher = InputCommands.USER.getMatcher(input);
+                if (matcher.matches()) {
+                    users.add(new User(matcher.group(1), matcher.group(2), Integer.parseInt(matcher.group(3)), Integer.parseInt(matcher.group(4))));
                 }
             }
             br.close();
             fr.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
+
     @Override
     public String toString() {
         return "User{" +

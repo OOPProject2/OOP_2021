@@ -1,4 +1,4 @@
-public class Tailor extends WorkShop{
+public class Tailor extends WorkShop {
     public static final int TAILOR_BUILD_COST = 400;
     public static final int TAILOR_PRODUCE_TIME = 6;
     private static final String PRODUCT = "Shirt";
@@ -6,5 +6,10 @@ public class Tailor extends WorkShop{
 
     public Tailor() {
         super(TAILOR_BUILD_COST, TAILOR_PRODUCE_TIME);
+    }
+
+    @Override
+    public String getWorkShopName() {
+        return "Tailor";
     }
 }

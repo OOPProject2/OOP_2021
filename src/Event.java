@@ -19,7 +19,7 @@ public class Event {
 
     public static void turnTime(int turnAmount) {
         Log.turnTime(turnAmount);
-        while (turnAmount > 0){
+        while (turnAmount > 0) {
             currentTime++;
             check();
             turnAmount--;

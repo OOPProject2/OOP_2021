@@ -26,9 +26,11 @@ public enum InputCommands {
     USER("User{username='(\\S+)', password='(\\S+)', missionsPassed=(\\d+), coinsForNextMission=(\\d+)}");
 
     Pattern pattern;
+
     InputCommands(String regex) {
-        pattern=Pattern.compile(regex);
+        pattern = Pattern.compile(regex);
     }
+
     public Matcher getMatcher(String input) {
         return this.pattern.matcher(input);
     }
