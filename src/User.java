@@ -40,7 +40,7 @@ public class User {
     }
 
 
-    public void appendToFile(File userFile) {
+    public void appendToFile(String  userFile) {
         try {
             FileWriter fw = new FileWriter(userFile, true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -52,7 +52,7 @@ public class User {
         }
     }
 
-    public static void readUsers(File userFile, ArrayList<User> users) {
+    public static void readUsers(String  userFile, ArrayList<User> users) {
         try {
             FileReader fr = new FileReader(userFile);
             BufferedReader br = new BufferedReader(fr);

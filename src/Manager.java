@@ -4,7 +4,7 @@ import java.util.Locale;
 
 public class Manager {
     private final ArrayList<User> users;
-    File userFile;
+    String  userFile;
     private static User user;
     private static final ArrayList<FarmAnimal> farmAnimals = new ArrayList<>();
     private static final ArrayList<WildAnimal> wildAnimals = new ArrayList<>();
@@ -17,12 +17,11 @@ public class Manager {
 
     private static String playerName;
 
-    public Manager(String playerName) {
+    public Manager() {
         users = new ArrayList<>();
-        userFile = new File("Users.txt");
+        userFile =  "Users.txt";
         User.readUsers(userFile, users);
         this.coins = 0;
-        this.playerName = playerName;
         new Log(this);
         new Mission();
     }
