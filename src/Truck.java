@@ -49,4 +49,31 @@ public class Truck {
         System.out.println("cannot store this item");
     }
 
+    public static void unload(String name) {
+        for (Product product : products) {
+            if (product.getName().equalsIgnoreCase(name)) {
+                if (WareHouse.addItem(product)) {
+                    System.out.println("item unloaded from truck and moved to warehouse");
+                    products.remove(product);
+                    Log.unloadFromTruck(name, 1);
+                    return;
+                }
+                Log.unloadFromTruck(name, 2);
+                return;
+            }
+        }
+        for (WildAnimal wildAnimal : wildAnimals) {
+            if (wildAnimal.getAnimalName().equalsIgnoreCase(name)) {
+                if (WareHouse.addItem(wildAnimal)) {
+                    System.out.println("item unloaded from truck and moved to warehouse");
+                    wildAnimals.remove(wildAnimal);
+                    Log.unloadFromTruck(name, 1);
+                    return;
+                }
+                Log.unloadFromTruck(name, 2);
+                return;
+            }
+        }
+        Log.unloadFromTruck(name, 3);
+    }
 }

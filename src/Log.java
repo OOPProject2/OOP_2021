@@ -173,6 +173,23 @@ public class Log {
         }
     }
 
+    public static void unloadFromTruck(String name, int statue) {
+        try {
+            if (statue == 1)
+                LOG.write("INFO : " + name + " unloaded from truck successfully" + getTime());
+            else if (statue == 2)
+                LOG.write("ALERT  : unload from truck attempt unsuccessful: " + name + " cannot be unloaded " +
+                        "from truck reason : not enough space" + getTime());
+            else if (statue == 3)
+                LOG.write("ALERT  : unload from truck attempt unsuccessful: " + name + " cannot be unloaded " +
+                        "from truck reason : item not found" + getTime());
+
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
     private static String getTime() {
         return " ~Time : " + Calendar.getInstance().getTime();
     }

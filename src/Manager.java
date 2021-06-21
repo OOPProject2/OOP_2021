@@ -215,7 +215,7 @@ public class Manager {
     }
 
     public void truckUnload(String itemName) {
-        //TODO
+        Truck.unload(itemName);
     }
 
     public void truckGO() {

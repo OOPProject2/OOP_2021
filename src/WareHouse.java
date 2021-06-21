@@ -51,14 +51,13 @@ public class WareHouse {
     public static <E> void removeFromWarehouse(E e) {
         if (e instanceof Product)
             for (Product product : products) {
-                if (product.getName().equalsIgnoreCase(((Product) e).getName().toLowerCase(Locale.ROOT))) ;
-                products.remove(e);
+                if (product.getName().equalsIgnoreCase(((Product) e).getName().toLowerCase(Locale.ROOT)))
+                    products.remove(e);
             }
         if (e instanceof WildAnimal)
             for (WildAnimal wildAnimal : wildAnimals) {
                 if (wildAnimal.getAnimalName().equalsIgnoreCase(((WildAnimal) e).getAnimalName().toLowerCase(Locale.ROOT)))
-                    ;
-                wildAnimals.remove(e);
+                    wildAnimals.remove(e);
             }
     }
 
