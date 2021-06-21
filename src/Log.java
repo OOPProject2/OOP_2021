@@ -219,6 +219,28 @@ public class Log {
         }
     }
 
+    public static void work(String workshopName, int statue) {
+        try {
+            if (statue == 1)
+                LOG.write("INFO : " + workshopName + " start working attempt unsuccessful reason : " +
+                        "workshop doesnt exit or not built yet" + getTime());
+            else if (statue == 2)
+                LOG.write("INFO  : " + workshopName + " started working" + getTime());
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
+    public static void addProduct(String productName) {
+        try {
+            LOG.write("INFo : " + productName + " added to game" + getTime());
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
     private static String getTime() {
         return " ~Time : " + Calendar.getInstance().getTime();
     }

@@ -1,15 +1,15 @@
-import java.util.Random;
-
 public class FarmAnimal extends Animal {
     private final String PRODUCED_PRODUCT;
     private final int TIME_PER_PRODUCT;
     private int life = 100;
+    private boolean isBusy;
     private static final int FARM_ANIMALS_MOVE_PER_TIME_UNIT = 1;
 
     public FarmAnimal(String PRODUCED_PRODUCT, int TIME_PER_PRODUCT, int price) {
         super(price, FARM_ANIMALS_MOVE_PER_TIME_UNIT);
         this.PRODUCED_PRODUCT = PRODUCED_PRODUCT;
         this.TIME_PER_PRODUCT = TIME_PER_PRODUCT;
+        start();
     }
 
     @Override
@@ -57,5 +57,20 @@ public class FarmAnimal extends Animal {
                 }
             }
         }
+    }
+
+    public void start() {
+        if (life > 0) {
+            Event.addWorkingEvent(TIME_PER_PRODUCT, PRODUCED_PRODUCT, 1);
+            isBusy = true;
+        }
+    }
+
+    public void produceDone() {
+        isBusy = false;
+    }
+
+    public int getLife() {
+        return life;
     }
 }

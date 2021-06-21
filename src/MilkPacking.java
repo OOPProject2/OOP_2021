@@ -5,11 +5,26 @@ public class MilkPacking extends WorkShop {
     private static final String REQUIRED_RAW_MATERIAL = "Milk";
 
     public MilkPacking() {
-        super(MILK_PACKING_BUILD_COST, MILK_PACKING_PRODUCE_TIME);
+        super(MILK_PACKING_BUILD_COST, MILK_PACKING_PRODUCE_TIME, REQUIRED_RAW_MATERIAL);
     }
 
     @Override
     public String getWorkShopName() {
         return "MilkPacking";
+    }
+
+    @Override
+    protected void workLevel1() {
+        Event.addWorkingEvent(MILK_PACKING_PRODUCE_TIME, PRODUCT, 1);
+    }
+
+    @Override
+    protected void workLevel2Normal() {
+        Event.addWorkingEvent(MILK_PACKING_PRODUCE_TIME, PRODUCT, 2);
+    }
+
+    @Override
+    protected void workLevel2Fast() {
+        Event.addWorkingEvent(MILK_PACKING_PRODUCE_TIME / 2, PRODUCT, 1);
     }
 }

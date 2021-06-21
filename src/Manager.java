@@ -112,8 +112,8 @@ public class Manager {
     }
 
     public void build(String workShopName) {
-        for (WildAnimal wildAnimal : wildAnimals) {
-            if (wildAnimal.getAnimalName().equalsIgnoreCase(workShopName)) {
+        for (WorkShop workShop : workShops) {
+            if (workShop.getWorkShopName().equalsIgnoreCase(workShopName)) {
                 System.out.println("WorkShop already exist");
                 Log.Build(workShopName, 1);
                 return;
@@ -189,11 +189,20 @@ public class Manager {
     }
 
     public void work(String workShopName) {
-        //TODO
+        for (WorkShop workShop : workShops) {
+            if (workShop.getWorkShopName().equalsIgnoreCase(workShopName)) {
+                workShop.work();
+                Log.work(workShopName, 2);
+                return;
+            }
+        }
+        System.out.println("workshop doesnt exist");
+        Log.work(workShopName, 1);
     }
 
     public void turn(int numberOfTimeUnit) {
         Event.turnTime(numberOfTimeUnit);
+        showGame();
     }
 
     public void cage(int x, int y) {
@@ -353,5 +362,19 @@ public class Manager {
 
     public static void addCoins(int amount) {
         coins += amount;
+    }
+
+    public static void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public static WorkShop getWorkShopByName(String workShopName) {
+        for (WorkShop workShop : workShops) {
+            if (workShop.getWorkShopName().equalsIgnoreCase(workShopName.toLowerCase(Locale.ROOT))) {
+                return workShop;
+            }
+        }
+        System.out.println("workshop doesnt exist");
+        return null;
     }
 }

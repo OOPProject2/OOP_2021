@@ -51,23 +51,27 @@ public class WareHouse {
     public static <E> void removeFromWarehouse(E e) {
         if (e instanceof Product)
             for (Product product : products) {
-                if (product.getName().equalsIgnoreCase(((Product) e).getName().toLowerCase(Locale.ROOT)))
+                if (product.getName().equalsIgnoreCase(((Product) e).getName().toLowerCase(Locale.ROOT))) {
+                    currentLoad -= ((Product) e).getREQUIRED_SPACE();
                     products.remove(e);
+                }
             }
         if (e instanceof WildAnimal)
             for (WildAnimal wildAnimal : wildAnimals) {
-                if (wildAnimal.getAnimalName().equalsIgnoreCase(((WildAnimal) e).getAnimalName().toLowerCase(Locale.ROOT)))
+                if (wildAnimal.getAnimalName().equalsIgnoreCase(((WildAnimal) e).getAnimalName().toLowerCase(Locale.ROOT))) {
+                    currentLoad -= WildAnimal.getSpaceRequired();
                     wildAnimals.remove(e);
+                }
             }
     }
 
     public static <E> E findItem(String itemName) {
         for (Product product : products) {
-            if (product.getName().equalsIgnoreCase(itemName))
+            if (product.getName().equalsIgnoreCase(itemName.toLowerCase(Locale.ROOT)))
                 return (E) product;
         }
         for (WildAnimal wildAnimal : wildAnimals) {
-            if (wildAnimal.getAnimalName().equalsIgnoreCase(itemName))
+            if (wildAnimal.getAnimalName().equalsIgnoreCase(itemName.toLowerCase(Locale.ROOT)))
                 return (E) wildAnimal;
         }
         return null;
