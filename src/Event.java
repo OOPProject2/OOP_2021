@@ -10,6 +10,7 @@ public class Event {
     private FarmAnimal farmAnimal;
     private Product toDisappearProduct;
     private WildAnimal toEscapeWildAnimal;
+    private String toSpawnWildAnimal;
     private boolean statue = false;//indicates if the events is already done or not ,true for done
     public static final int FILLING_BUCKET = 1;
     public static final int TRUCK_GO = 2;
@@ -17,6 +18,7 @@ public class Event {
     public static final int FARM_ANIMAL_PRODUCE = 4;
     public static final int PRODUCT_DISAPPEAR = 5;
     public static final int WILD_ANIMAL_ESCAPE = 6;
+    public static final int WILD_ANIMAL_SPAWN = 7;
     private static final ArrayList<Event> events = new ArrayList<>();
 
     public static void addEvent(int eventCode) {
@@ -42,6 +44,10 @@ public class Event {
 
     public static void addToEscapeWildAnimal(int escapeTime, WildAnimal toEscapeWildAnimal) {
         events.add(new Event(escapeTime, toEscapeWildAnimal));
+    }
+
+    public static void addWildAnimalSpawnEvent(int eventTime, String wildAnimal) {
+        events.add(new Event(currentTime + eventTime, wildAnimal));
     }
 
     public static void turnTime(int turnAmount) {
@@ -175,6 +181,20 @@ public class Event {
                     Manager.removeWildAnimal(event.toEscapeWildAnimal);
                 }
             }
+            case WILD_ANIMAL_SPAWN: {
+                event.statue = true;
+                switch (event.toSpawnWildAnimal.toLowerCase(Locale.ROOT)) {
+                    case "bear": {
+                        Manager.addWildAnimal(new Bear());
+                    }
+                    case "lion": {
+                        Manager.addWildAnimal(new Lion());
+                    }
+                    case "tiger": {
+                        Manager.addWildAnimal(new Tiger());
+                    }
+                }
+            }
         }
 
     }
@@ -209,6 +229,12 @@ public class Event {
         this.eventTime = eventTime;
         this.toEscapeWildAnimal = toEscapeWildAnimal;
         this.eventCode = WILD_ANIMAL_ESCAPE;
+    }
+
+    public Event(int eventTime, String wildAnimalToSpawn) {
+        this.eventTime = eventTime;
+        this.toSpawnWildAnimal = wildAnimalToSpawn;
+        this.eventCode = WILD_ANIMAL_SPAWN;
     }
 
     public static int getCurrentTime() {

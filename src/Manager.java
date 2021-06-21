@@ -5,7 +5,7 @@ import java.util.Locale;
 public class Manager {
     private final ArrayList<User> users;
     File userFile;
-    User user;
+    private static User user;
     private static final ArrayList<FarmAnimal> farmAnimals = new ArrayList<>();
     private static final ArrayList<WildAnimal> wildAnimals = new ArrayList<>();
     private static final ArrayList<Cat> cats = new ArrayList<>();
@@ -13,7 +13,8 @@ public class Manager {
     private static final ArrayList<Task> tasks = new ArrayList<>();
     private static final ArrayList<Product> products = new ArrayList<>();
     private static final ArrayList<WorkShop> workShops = new ArrayList<>();
-    private static int coins;
+    private static int coins = 0;
+
     private static String playerName;
 
     public Manager(String playerName) {
@@ -22,6 +23,8 @@ public class Manager {
         User.readUsers(userFile, users);
         this.coins = 0;
         this.playerName = playerName;
+        new Log(this);
+        new Mission();
     }
 
     public void planting(int x, int y) {
@@ -70,6 +73,8 @@ public class Manager {
 
     public boolean start(int level) {
         if (user.getMissionsPassed() + 1 >= level) {
+            Mission.Level(level);
+            coins += Mission.getInitialCoins();
             return true;
         }
         return false;
@@ -460,14 +465,17 @@ public class Manager {
         }
     }
 
-    public static void checkTasks(){
+    public static void checkTasks() {
         boolean fullyDone = true;
         for (Task task : tasks) {
             if (!task.isDone())
                 fullyDone = false;
         }
-        if (fullyDone){
+        if (fullyDone) {
             System.out.println("!!!LEVEL COMPLETED!!!");
+            if (Event.getCurrentTime() <= Mission.getTimeToGetPrize())
+                coins += Mission.getPrize();
+            user.setMissionsPassed(user.getMissionsPassed() + 1);
         }
     }
 
@@ -483,5 +491,13 @@ public class Manager {
 
     public static void removeWildAnimal(WildAnimal wildAnimal) {
         wildAnimals.removeIf(animal -> animal.equals(wildAnimal));
+    }
+
+    public static void addWildAnimal(WildAnimal wildAnimal) {
+        wildAnimals.add(wildAnimal);
+    }
+
+    public static void addTask(Task task) {
+        tasks.add(task);
     }
 }
