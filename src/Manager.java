@@ -361,6 +361,11 @@ public class Manager {
     }
 
     public static void addProduct(Product product) {
+        for (Task task : tasks) {
+            if (task.getTaskProduct().equalsIgnoreCase(product.getName())) {
+                task.completeTask();
+            }
+        }
         products.add(product);
     }
 
@@ -408,17 +413,17 @@ public class Manager {
         for (Cat cat : cats) {
             for (Product product : products) {
                 if (!product.isCollected() && product.getProductXLocInGameField() == cat.getXLoc()
-                && product.getProductYLocInGameField() == cat.getYLoc()){
+                        && product.getProductYLocInGameField() == cat.getYLoc()) {
                     WareHouse.addItem(product);
                 }
             }
         }
 
         for (WildAnimal wildAnimal : wildAnimals) {
-            if (wildAnimal.getXLoc() != 0 && wildAnimal.getYLoc() != 0 && !wildAnimal.isFullyCaged()){
+            if (wildAnimal.getXLoc() != 0 && wildAnimal.getYLoc() != 0 && !wildAnimal.isFullyCaged()) {
                 boolean flag = true;
                 for (Dog dog : dogs) {
-                    if (wildAnimal.getXLoc() == dog.getXLoc() && wildAnimal.getYLoc() == dog.getYLoc()){
+                    if (wildAnimal.getXLoc() == dog.getXLoc() && wildAnimal.getYLoc() == dog.getYLoc()) {
                         dogs.remove(dog);
                         wildAnimals.remove(wildAnimal);
                         flag = false;
@@ -426,7 +431,7 @@ public class Manager {
                     }
                 }
                 if (flag) {
-                    if (wildAnimal instanceof Tiger){
+                    if (wildAnimal instanceof Tiger) {
                         int x = wildAnimal.getXLoc();
                         int y = wildAnimal.getYLoc();
                         switch (((Tiger) wildAnimal).lastMoveDirection) {
@@ -455,7 +460,18 @@ public class Manager {
         }
     }
 
-    public static void removeProduct(Product product){
+    public static void checkTasks(){
+        boolean fullyDone = true;
+        for (Task task : tasks) {
+            if (!task.isDone())
+                fullyDone = false;
+        }
+        if (fullyDone){
+            System.out.println("!!!LEVEL COMPLETED!!!");
+        }
+    }
+
+    public static void removeProduct(Product product) {
         for (Product product1 : products) {
             if (product1.equals(product)) {
                 products.remove(product1);
@@ -465,7 +481,7 @@ public class Manager {
         }
     }
 
-    public static void removeWildAnimal(WildAnimal wildAnimal){
+    public static void removeWildAnimal(WildAnimal wildAnimal) {
         wildAnimals.removeIf(animal -> animal.equals(wildAnimal));
     }
 }

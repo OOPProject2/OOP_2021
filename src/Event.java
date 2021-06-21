@@ -36,12 +36,12 @@ public class Event {
         events.add(new Event(produceTime, FARM_ANIMAL_PRODUCE, product, productCount, farmAnimal));
     }
 
-    public static void addToDisappearProductEvent(int disappearTime,Product product){
+    public static void addToDisappearProductEvent(int disappearTime, Product product) {
         events.add(new Event(currentTime + disappearTime, product));
     }
 
-    public static void addToEscapeWildAnimal(int escapeTime,WildAnimal toEscapeWildAnimal){
-        events.add(new Event(escapeTime,toEscapeWildAnimal));
+    public static void addToEscapeWildAnimal(int escapeTime, WildAnimal toEscapeWildAnimal) {
+        events.add(new Event(escapeTime, toEscapeWildAnimal));
     }
 
     public static void turnTime(int turnAmount) {
@@ -52,6 +52,7 @@ public class Event {
             Manager.moveAllAnimals();
             Manager.farmAnimalsLifeLoss();
             Manager.check();
+            Manager.checkTasks();
             turnAmount--;
         }
 
@@ -161,16 +162,16 @@ public class Event {
                 }
                 event.farmAnimal.start();
             }
-            case PRODUCT_DISAPPEAR:{
+            case PRODUCT_DISAPPEAR: {
                 event.statue = true;
-                if (!event.toDisappearProduct.isCollected()){
+                if (!event.toDisappearProduct.isCollected()) {
                     Manager.removeProduct(event.toDisappearProduct);
                     Log.disappearProduct(event.toDisappearProduct.getName());
                 }
             }
-            case WILD_ANIMAL_ESCAPE:{
+            case WILD_ANIMAL_ESCAPE: {
                 event.statue = true;
-                if (!event.toEscapeWildAnimal.isStored()){
+                if (!event.toEscapeWildAnimal.isStored()) {
                     Manager.removeWildAnimal(event.toEscapeWildAnimal);
                 }
             }
@@ -198,7 +199,7 @@ public class Event {
         this.farmAnimal = farmAnimal;
     }
 
-    public Event(int eventTime, Product toDisappearProduct){
+    public Event(int eventTime, Product toDisappearProduct) {
         this.eventTime = eventTime;
         this.toDisappearProduct = toDisappearProduct;
         this.eventCode = PRODUCT_DISAPPEAR;

@@ -16,7 +16,7 @@ public class Product {
         Random random = new Random();
         productXLocInGameField = random.nextInt(6) + 1;
         productYLocInGameField = random.nextInt(6) + 1;
-        Event.addToDisappearProductEvent(TIME_UNIT_TO_GET,this);
+        Event.addToDisappearProductEvent(TIME_UNIT_TO_GET, this);
     }
 
     public boolean isCollected() {

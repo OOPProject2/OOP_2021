@@ -31,7 +31,7 @@ public class WildAnimal extends Animal {
             currentLevel++;
             Log.cage(this.getAnimalName(), this.getXLoc(), this.getYLoc(), 1);
             System.out.println("animal cage level increased successfully");
-            if (isFullyCaged()){
+            if (isFullyCaged()) {
                 Event.addToEscapeWildAnimal(TIME_UNIT_TO_ESCAPE, this);
             }
         } else {
@@ -49,7 +49,7 @@ public class WildAnimal extends Animal {
         return currentLevel == CAGE_LEVEL_REQUIRED;
     }
 
-    public boolean isStored(){
+    public boolean isStored() {
         return this.getXLoc() == 0 && this.getYLoc() == 0;
     }
 }

@@ -9,6 +9,19 @@ public class Task {
         this.completedAmount = 0;
     }
 
+    public String getTaskProduct() {
+        return taskProduct;
+    }
+
+    public void completeTask() {
+        if (this.completedAmount < this.taskAmount)
+            this.completedAmount++;
+    }
+
+    public boolean isDone() {
+        return completedAmount == taskAmount;
+    }
+
     public void showTask() {
         System.out.println(taskProduct + " " + completedAmount + "/" + taskAmount);
     }

@@ -241,7 +241,7 @@ public class Log {
         }
     }
 
-    public static void disappearProduct(String productName){
+    public static void disappearProduct(String productName) {
         try {
             LOG.write("INFo : " + productName + " disappeared from game because it didnt were collected on time" +
                     getTime());

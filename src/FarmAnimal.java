@@ -61,7 +61,7 @@ public class FarmAnimal extends Animal {
 
     public void start() {
         if (life > 0) {
-            Event.addFarmAnimalProducingEvent(TIME_PER_PRODUCT, PRODUCED_PRODUCT, 1,this);
+            Event.addFarmAnimalProducingEvent(TIME_PER_PRODUCT, PRODUCED_PRODUCT, 1, this);
             isBusy = true;
         }
     }
@@ -70,11 +70,11 @@ public class FarmAnimal extends Animal {
         return life;
     }
 
-    public void lifeLoss(){
+    public void lifeLoss() {
         this.life -= 10;
     }
 
-    public void eat(){
+    public void eat() {
         life = 100;
     }
 }
