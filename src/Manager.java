@@ -464,4 +464,8 @@ public class Manager {
 
         }
     }
+
+    public static void removeWildAnimal(WildAnimal wildAnimal){
+        wildAnimals.removeIf(animal -> animal.equals(wildAnimal));
+    }
 }
