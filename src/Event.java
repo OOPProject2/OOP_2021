@@ -48,7 +48,7 @@ public class Event {
                 event.statue = true;
                 Log.bucketFilled();
             }
-            case TRUCK_GO:{
+            case TRUCK_GO: {
                 Log.truckGo(3);
                 event.statue = true;
                 Truck.returned();

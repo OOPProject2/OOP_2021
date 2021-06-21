@@ -16,7 +16,7 @@ public class Truck {
     public static void loadItemFromWareHouse(String name) {
         if (isBusy) {
             System.out.println("truck is busy");
-            Log.loadToTruck(name,3);
+            Log.loadToTruck(name, 3);
             return;
         }
         if (WareHouse.findItem(name) != null) {
@@ -59,7 +59,7 @@ public class Truck {
     public static void unload(String name) {
         if (isBusy) {
             System.out.println("truck is busy");
-            Log.unloadFromTruck(name,4);
+            Log.unloadFromTruck(name, 4);
             return;
         }
         for (Product product : products) {
@@ -89,8 +89,8 @@ public class Truck {
         Log.unloadFromTruck(name, 3);
     }
 
-    public void go(){
-        if (isBusy){
+    public static void go() {
+        if (isBusy) {
             System.out.println("truck is busy");
             Log.truckGo(2);
             return;
@@ -100,7 +100,7 @@ public class Truck {
         Event.addEvent(Event.TRUCK_GO);
     }
 
-    public static void returned(){
+    public static void returned() {
         isBusy = false;
         for (Product product : products) {
             Manager.addCoins(product.getPRICE());

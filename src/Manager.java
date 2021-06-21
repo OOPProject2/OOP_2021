@@ -115,7 +115,7 @@ public class Manager {
         for (WildAnimal wildAnimal : wildAnimals) {
             if (wildAnimal.getAnimalName().equalsIgnoreCase(workShopName)) {
                 System.out.println("WorkShop already exist");
-                Log.Build(workShopName,1);
+                Log.Build(workShopName, 1);
                 return;
             }
         }
@@ -125,10 +125,10 @@ public class Manager {
                     workShops.add(new Bakery());
                     coins -= Bakery.BAKERY_BUILD_COST;
                     System.out.println("Bakery built successfully");
-                    Log.Build(workShopName,4);
+                    Log.Build(workShopName, 4);
                 } else {
                     System.out.println("not enough coins");
-                    Log.Build(workShopName,2);
+                    Log.Build(workShopName, 2);
                 }
             }
             case "ice" + "cream" + "shop": {
@@ -136,7 +136,7 @@ public class Manager {
                     workShops.add(new IceCreamShop());
                     coins -= IceCreamShop.ICE_CREAM_SHOP_BUILD_COST;
                     System.out.println("IceCreamShop built successfully");
-                    Log.Build(workShopName,4);
+                    Log.Build(workShopName, 4);
                 } else {
                     System.out.println("not enough coins");
                 }
@@ -146,7 +146,7 @@ public class Manager {
                     workShops.add(new MilkPacking());
                     coins -= MilkPacking.MILK_PACKING_BUILD_COST;
                     System.out.println("MilkPacking built successfully");
-                    Log.Build(workShopName,4);
+                    Log.Build(workShopName, 4);
                 } else {
                     System.out.println("not enough coins");
                 }
@@ -156,7 +156,7 @@ public class Manager {
                     workShops.add(new Mill());
                     coins -= Mill.MILL_BUILD_COST;
                     System.out.println("Mill built successfully");
-                    Log.Build(workShopName,4);
+                    Log.Build(workShopName, 4);
                 } else {
                     System.out.println("not enough coins");
                 }
@@ -166,7 +166,7 @@ public class Manager {
                     workShops.add(new Tailor());
                     coins -= Tailor.TAILOR_BUILD_COST;
                     System.out.println("Tailor built successfully");
-                    Log.Build(workShopName,4);
+                    Log.Build(workShopName, 4);
                 } else {
                     System.out.println("not enough coins");
                 }
@@ -176,14 +176,14 @@ public class Manager {
                     workShops.add(new Weaver());
                     coins -= Weaver.WEAVER_BUILD_COST;
                     System.out.println("Weaver built successfully");
-                    Log.Build(workShopName,4);
+                    Log.Build(workShopName, 4);
                 } else {
                     System.out.println("not enough coins");
                 }
             }
             default: {
                 System.out.println("workshop not found");
-                Log.Build(workShopName,3);
+                Log.Build(workShopName, 3);
             }
         }
     }
@@ -219,7 +219,7 @@ public class Manager {
     }
 
     public void truckGO() {
-        //TODO
+        Truck.go();
     }
 
     public void buy(String animalName) {
@@ -351,7 +351,7 @@ public class Manager {
         return 'O';
     }
 
-    public static void addCoins(int amount){
+    public static void addCoins(int amount) {
         coins += amount;
     }
 }

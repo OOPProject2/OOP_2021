@@ -196,7 +196,7 @@ public class Log {
         }
     }
 
-    public static void truckGo(int statue){
+    public static void truckGo(int statue) {
         try {
             if (statue == 1)
                 LOG.write("INFO : " + "truck started successfully" + getTime());
@@ -210,11 +210,10 @@ public class Log {
         }
     }
 
-    public static void addCoins(int amount){
+    public static void addCoins(int amount) {
         try {
             LOG.write("INFO : " + amount + " coins added" + getTime());
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             System.out.println("ERROR : Writing to Log File");
             e.printStackTrace();
         }
