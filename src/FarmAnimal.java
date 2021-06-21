@@ -61,13 +61,9 @@ public class FarmAnimal extends Animal {
 
     public void start() {
         if (life > 0) {
-            Event.addWorkingEvent(TIME_PER_PRODUCT, PRODUCED_PRODUCT, 1);
+            Event.addFarmAnimalProducingEvent(TIME_PER_PRODUCT, PRODUCED_PRODUCT, 1,this);
             isBusy = true;
         }
-    }
-
-    public void produceDone() {
-        isBusy = false;
     }
 
     public int getLife() {

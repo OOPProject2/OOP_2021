@@ -426,6 +426,24 @@ public class Manager {
                     }
                 }
                 if (flag) {
+                    if (wildAnimal instanceof Tiger){
+                        int x = wildAnimal.getXLoc();
+                        int y = wildAnimal.getYLoc();
+                        switch (((Tiger) wildAnimal).lastMoveDirection) {
+                            case 0 -> y++;
+                            case 1 -> x--;
+                            case 2 -> y--;
+                            case 3 -> x++;
+                        }
+                        int finalX = x;
+                        int finalY = y;
+                        farmAnimals.removeIf(farmAnimal -> farmAnimal.getXLoc() == finalX
+                                && farmAnimal.getYLoc() == finalY);
+                        cats.removeIf(cat -> cat.getXLoc() == finalX
+                                && cat.getYLoc() == finalY);
+                        products.removeIf(product -> product.getProductXLocInGameField() == finalX
+                                && product.getProductYLocInGameField() == finalY);
+                    }
                     farmAnimals.removeIf(farmAnimal -> farmAnimal.getXLoc() == wildAnimal.getXLoc()
                             && farmAnimal.getYLoc() == wildAnimal.getYLoc());
                     cats.removeIf(cat -> cat.getXLoc() == wildAnimal.getXLoc()
@@ -434,6 +452,16 @@ public class Manager {
                             && product.getProductYLocInGameField() == wildAnimal.getYLoc());
                 }
             }
+        }
+    }
+
+    public static void removeProduct(Product product){
+        for (Product product1 : products) {
+            if (product1.equals(product)) {
+                products.remove(product1);
+                return;
+            }
+
         }
     }
 }

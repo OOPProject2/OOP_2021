@@ -16,11 +16,12 @@ public class Animal {
 
     protected void movement() { }
 
-    protected void movement(int length) {
+    protected int movement(int length) {
         boolean exit = false;
+        int movementDirection = 0;
         while (!exit) {
             Random rand = new Random();
-            int movementDirection = rand.nextInt(4);
+            movementDirection = rand.nextInt(4);
             switch (movementDirection) {
                 case 0: {
                     if (move('N', length))
@@ -40,6 +41,7 @@ public class Animal {
                 }
             }
         }
+        return movementDirection;
     }
 
     protected boolean move(char direction, int length) {

@@ -8,11 +8,13 @@ public class Event {
     private String product;
     private int productsCount;
     private FarmAnimal farmAnimal;
+    private Product toDisappearProduct;
     private boolean statue = false;//indicates if the events is already done or not ,true for done
     public static final int FILLING_BUCKET = 1;
     public static final int TRUCK_GO = 2;
     public static final int WORK = 3;
     public static final int FARM_ANIMAL_PRODUCE = 4;
+    public static final int PRODUCT_DISAPPEAR = 5;
     private static final ArrayList<Event> events = new ArrayList<>();
 
     public static void addEvent(int eventCode) {
@@ -30,6 +32,10 @@ public class Event {
 
     public static void addFarmAnimalProducingEvent(int produceTime, String product, int productCount, FarmAnimal farmAnimal) {
         events.add(new Event(produceTime, FARM_ANIMAL_PRODUCE, product, productCount, farmAnimal));
+    }
+
+    public static void addToDisappearProductEvent(int disappearTime,Product product){
+        events.add(new Event(currentTime + disappearTime, product));
     }
 
     public static void turnTime(int turnAmount) {
@@ -149,6 +155,13 @@ public class Event {
                 }
                 event.farmAnimal.start();
             }
+            case PRODUCT_DISAPPEAR:{
+                event.statue = true;
+                if (!event.toDisappearProduct.isCollected()){
+                    Manager.removeProduct(event.toDisappearProduct);
+                    Log.disappearProduct(event.toDisappearProduct.getName());
+                }
+            }
         }
 
     }
@@ -171,6 +184,12 @@ public class Event {
         this.product = product;
         this.productsCount = productsCount;
         this.farmAnimal = farmAnimal;
+    }
+
+    public Event(int eventTime, Product toDisappearProduct){
+        this.eventTime = eventTime;
+        this.toDisappearProduct = toDisappearProduct;
+        this.eventCode = PRODUCT_DISAPPEAR;
     }
 
     public static int getCurrentTime() {
