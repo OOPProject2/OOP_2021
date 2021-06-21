@@ -13,7 +13,7 @@ public class Tiger extends WildAnimal {
     }
 
     @Override
-    protected void Movement() {
-        super.Movement(TIGER_MOVE_PER_TIME_UNIT);
+    protected void movement() {
+        super.movement(TIGER_MOVE_PER_TIME_UNIT);
     }
 }

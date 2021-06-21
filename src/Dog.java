@@ -15,7 +15,7 @@ public class Dog extends OtherAnimals {
     }
 
     @Override
-    protected void Movement() {
-        super.Movement(MOVE_PER_TIME_UNIT);
+    protected void movement() {
+        super.movement(MOVE_PER_TIME_UNIT);
     }
 }

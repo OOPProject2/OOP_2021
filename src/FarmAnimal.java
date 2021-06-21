@@ -34,9 +34,9 @@ public class FarmAnimal extends Animal {
     }
 
     @Override
-    protected void Movement() {
+    public void movement() {
         if (life > 50) {
-            super.Movement(FARM_ANIMALS_MOVE_PER_TIME_UNIT);
+            super.movement(FARM_ANIMALS_MOVE_PER_TIME_UNIT);
         } else {
             char movementDirection = GameField.closestGrass(this.getXLoc(), this.getYLoc());
             switch (movementDirection) {
@@ -72,5 +72,13 @@ public class FarmAnimal extends Animal {
 
     public int getLife() {
         return life;
+    }
+
+    public void lifeLoss(){
+        this.life -= 10;
+    }
+
+    public void eat(){
+        life = 100;
     }
 }

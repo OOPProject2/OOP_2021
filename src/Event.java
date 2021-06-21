@@ -37,6 +37,9 @@ public class Event {
         while (turnAmount > 0) {
             currentTime++;
             check();
+            Manager.moveAllAnimals();
+            Manager.farmAnimalsLifeLoss();
+            Manager.check();
             turnAmount--;
         }
 
@@ -45,7 +48,7 @@ public class Event {
     private static void check() {
         for (Event event : events) {
             if (!event.statue) {
-                if (event.eventTime >= currentTime) {
+                if (event.eventTime <= currentTime) {
                     doEvent(event);
                 }
             }

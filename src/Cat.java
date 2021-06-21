@@ -15,7 +15,7 @@ public class Cat extends OtherAnimals {
     }
 
     @Override
-    protected void Movement() {
+    protected void movement() {
         char movementDirection = Manager.closestProduct(getXLoc(), getXLoc());
         switch (movementDirection) {
             case 'N': {

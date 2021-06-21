@@ -61,4 +61,12 @@ public class GameField {
         }
         return 'O';
     }
+
+    public static int getGrassCount(int x, int y){
+        return gameField[x-1][y-1];
+    }
+
+    public static void eatGrass(int x, int y){
+        gameField[x-1][y-1]--;
+    }
 }

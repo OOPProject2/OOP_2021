@@ -6,11 +6,11 @@ public class Manager {
     private final ArrayList<User> users;
     File userFile;
     User user;
-    private final ArrayList<FarmAnimal> farmAnimals;
-    private final ArrayList<WildAnimal> wildAnimals;
-    private final ArrayList<Cat> cats;
-    private final ArrayList<Dog> dogs;
-    private final ArrayList<Task> tasks = new ArrayList<>();
+    private static final ArrayList<FarmAnimal> farmAnimals = new ArrayList<>();
+    private static final ArrayList<WildAnimal> wildAnimals = new ArrayList<>();
+    private static final ArrayList<Cat> cats = new ArrayList<>();
+    private static final ArrayList<Dog> dogs = new ArrayList<>();
+    private static final ArrayList<Task> tasks = new ArrayList<>();
     private static final ArrayList<Product> products = new ArrayList<>();
     private static final ArrayList<WorkShop> workShops = new ArrayList<>();
     private static int coins;
@@ -20,10 +20,6 @@ public class Manager {
         users = new ArrayList<>();
         userFile = new File("Users.txt");
         User.readUsers(userFile, users);
-        this.farmAnimals = new ArrayList<>();
-        this.wildAnimals = new ArrayList<>();
-        this.dogs = new ArrayList<>();
-        this.cats = new ArrayList<>();
         this.coins = 0;
         this.playerName = playerName;
     }
@@ -376,5 +372,68 @@ public class Manager {
         }
         System.out.println("workshop doesnt exist");
         return null;
+    }
+
+    public static void moveAllAnimals() {
+        for (WildAnimal wildAnimal : wildAnimals) {
+            wildAnimal.movement();
+        }
+        for (Dog dog : dogs) {
+            dog.movement();
+        }
+        for (Cat cat : cats) {
+            cat.movement();
+        }
+        for (FarmAnimal farmAnimal : farmAnimals) {
+            farmAnimal.movement();
+        }
+    }
+
+    public static void farmAnimalsLifeLoss() {
+        for (FarmAnimal farmAnimal : farmAnimals) {
+            farmAnimal.lifeLoss();
+        }
+    }
+
+    public static void check() {
+        for (FarmAnimal farmAnimal : farmAnimals) {
+            if (farmAnimal.getLife() <= 50 && farmAnimal.getLife() > 0) {
+                if (GameField.getGrassCount(farmAnimal.getXLoc(), farmAnimal.getYLoc()) > 0) {
+                    farmAnimal.eat();
+                    GameField.eatGrass(farmAnimal.getXLoc(), farmAnimal.getYLoc());
+                }
+            }
+        }
+
+        for (Cat cat : cats) {
+            for (Product product : products) {
+                if (!product.isCollected() && product.getProductXLocInGameField() == cat.getXLoc()
+                && product.getProductYLocInGameField() == cat.getYLoc()){
+                    WareHouse.addItem(product);
+                }
+            }
+        }
+
+        for (WildAnimal wildAnimal : wildAnimals) {
+            if (wildAnimal.getXLoc() != 0 && wildAnimal.getYLoc() != 0 && !wildAnimal.isFullyCaged()){
+                boolean flag = true;
+                for (Dog dog : dogs) {
+                    if (wildAnimal.getXLoc() == dog.getXLoc() && wildAnimal.getYLoc() == dog.getYLoc()){
+                        dogs.remove(dog);
+                        wildAnimals.remove(wildAnimal);
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    farmAnimals.removeIf(farmAnimal -> farmAnimal.getXLoc() == wildAnimal.getXLoc()
+                            && farmAnimal.getYLoc() == wildAnimal.getYLoc());
+                    cats.removeIf(cat -> cat.getXLoc() == wildAnimal.getXLoc()
+                            && cat.getYLoc() == wildAnimal.getYLoc());
+                    products.removeIf(product -> product.getProductXLocInGameField() == wildAnimal.getXLoc()
+                            && product.getProductYLocInGameField() == wildAnimal.getYLoc());
+                }
+            }
+        }
     }
 }

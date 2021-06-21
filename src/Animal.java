@@ -14,10 +14,9 @@ public class Animal {
         this.MOVE_PER_TIME_UNIT = MOVE_PER_TIME_UNIT;
     }
 
-    protected void Movement() {
-    }
+    protected void movement() { }
 
-    protected void Movement(int length) {
+    protected void movement(int length) {
         boolean exit = false;
         while (!exit) {
             Random rand = new Random();
