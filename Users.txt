@@ -1,0 +1,1 @@
+User{username='mahdiw213', password='kdfjioj2', missionsPassed=0, coinsForNextMission=200}

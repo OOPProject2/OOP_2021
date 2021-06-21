@@ -18,8 +18,10 @@ public class InputProcessor {
         while (!exit) {
             input = scan.nextLine();
             if (InputCommands.SIGNUP.getMatcher(input).matches()) {
+                input=scan.nextLine();
                 if ((matcher1 = InputCommands.USERNAME.getMatcher(input)).matches()) {
                     if (!manager.foundUsername(matcher1.group(1))) {
+                        input=scan.nextLine();
                         if ((matcher2 = InputCommands.PASSWORD.getMatcher(input)).matches()) {
                             manager.creatAccountForUser(matcher1.group(1), matcher2.group(1));
                             login();
@@ -27,8 +29,10 @@ public class InputProcessor {
                     } else System.out.println("this username already exist!!");
                 } else System.err.println("Invalid input for username!!");
             } else if (InputCommands.LOGIN.getMatcher(input).matches()) {
+                input=scan.nextLine();
                 if ((matcher1 = InputCommands.USERNAME.getMatcher(input)).matches()) {
                     if (manager.foundUsername(matcher1.group(1))) {
+                        input=scan.nextLine();
                         if ((matcher2 = InputCommands.PASSWORD.getMatcher(input)).matches()) {
                             if (manager.foundPassword(matcher1.group(1), matcher2.group(1))) {
                                 menu();

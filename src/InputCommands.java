@@ -23,7 +23,7 @@ public enum InputCommands {
     TRUCK_GO("(?i)\\s*truck\\s+go\\s*"),
     INQUIRY("(?i)\\s*inquiry\\s*"),
     MENU("(?i)\\s*menu\\s*"),
-    USER("User{username='(\\S+)', password='(\\S+)', missionsPassed=(\\d+), coinsForNextMission=(\\d+)}");
+    USER("User\\{username='(\\S+)', password='(\\S+)', missionsPassed=(\\d+), coinsForNextMission=(\\d+)\\}");
 
     Pattern pattern;
 
