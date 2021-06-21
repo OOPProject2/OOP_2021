@@ -42,4 +42,8 @@ public class Product {
     public int getREQUIRED_SPACE() {
         return REQUIRED_SPACE;
     }
+
+    public int getPRICE() {
+        return PRICE;
+    }
 }

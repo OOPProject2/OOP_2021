@@ -7,12 +7,16 @@ public class Event {
     private int eventCode;
     private boolean statue = false;//indicates if the events is already done or not ,true for done
     public static final int FILLING_BUCKET = 1;
+    public static final int TRUCK_GO = 2;
     private static final ArrayList<Event> events = new ArrayList<>();
 
     public static void addEvent(int eventCode) {
         switch (eventCode) {
             case FILLING_BUCKET: {
                 events.add(new Event(currentTime + Well.REFILLING_TIME, FILLING_BUCKET));
+            }
+            case TRUCK_GO: {
+                events.add(new Event(currentTime + Truck.TIME_UNIT_TO_WORK, TRUCK_GO));
             }
         }
     }
@@ -43,6 +47,11 @@ public class Event {
                 Well.fillingBucket();
                 event.statue = true;
                 Log.bucketFilled();
+            }
+            case TRUCK_GO:{
+                Log.truckGo(3);
+                event.statue = true;
+                Truck.returned();
             }
         }
     }

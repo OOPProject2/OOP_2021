@@ -13,7 +13,7 @@ public class Manager {
     private final ArrayList<Task> tasks = new ArrayList<>();
     private static final ArrayList<Product> products = new ArrayList<>();
     private static final ArrayList<WorkShop> workShops = new ArrayList<>();
-    private int coins;
+    private static int coins;
     private static String playerName;
 
     public Manager(String playerName) {
@@ -349,5 +349,9 @@ public class Manager {
         } else if (Math.abs(x - closestProductX) == 0 && Math.abs(y - closestProductY) == 0)
             return 'O';
         return 'O';
+    }
+
+    public static void addCoins(int amount){
+        coins += amount;
     }
 }

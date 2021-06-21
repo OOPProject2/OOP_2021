@@ -3,15 +3,22 @@ import java.util.ArrayList;
 public class Truck {
     private static final int CAPACITY = 15;
     private static int currentLoad;
-    private final int TIME_UNIT_TO_WORK = 10;
+    public static final int TIME_UNIT_TO_WORK = 10;
+    private static boolean isBusy;
     private static final ArrayList<Product> products = new ArrayList<>();
     private static final ArrayList<WildAnimal> wildAnimals = new ArrayList<>();
 
     public Truck() {
         currentLoad = 0;
+        isBusy = false;
     }
 
     public static void loadItemFromWareHouse(String name) {
+        if (isBusy) {
+            System.out.println("truck is busy");
+            Log.loadToTruck(name,3);
+            return;
+        }
         if (WareHouse.findItem(name) != null) {
             load(WareHouse.findItem(name));
         } else {
@@ -50,6 +57,11 @@ public class Truck {
     }
 
     public static void unload(String name) {
+        if (isBusy) {
+            System.out.println("truck is busy");
+            Log.unloadFromTruck(name,4);
+            return;
+        }
         for (Product product : products) {
             if (product.getName().equalsIgnoreCase(name)) {
                 if (WareHouse.addItem(product)) {
@@ -75,5 +87,30 @@ public class Truck {
             }
         }
         Log.unloadFromTruck(name, 3);
+    }
+
+    public void go(){
+        if (isBusy){
+            System.out.println("truck is busy");
+            Log.truckGo(2);
+            return;
+        }
+        isBusy = true;
+        Log.truckGo(1);
+        Event.addEvent(Event.TRUCK_GO);
+    }
+
+    public static void returned(){
+        isBusy = false;
+        for (Product product : products) {
+            Manager.addCoins(product.getPRICE());
+            System.out.println(product.getPRICE() + " coins added");
+            Log.addCoins(product.getPRICE());
+        }
+        for (WildAnimal wildAnimal : wildAnimals) {
+            Manager.addCoins(wildAnimal.getPrice());
+            System.out.println(wildAnimal.getPrice() + " coins added");
+            Log.addCoins(wildAnimal.getPrice());
+        }
     }
 }

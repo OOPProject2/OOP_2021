@@ -166,6 +166,9 @@ public class Log {
             else if (statue == 2)
                 LOG.write("ALERT  : load to truck attempt unsuccessful: " + name + " cannot be loaded " +
                         "to truck reason : not enough space" + getTime());
+            else if (statue == 3)
+                LOG.write("ALERT  : load to truck attempt unsuccessful: " + name + " cannot be loaded " +
+                        "to truck reason : truck is busy" + getTime());
 
         } catch (IOException e) {
             System.out.println("ERROR : Writing to Log File");
@@ -183,8 +186,35 @@ public class Log {
             else if (statue == 3)
                 LOG.write("ALERT  : unload from truck attempt unsuccessful: " + name + " cannot be unloaded " +
                         "from truck reason : item not found" + getTime());
+            else if (statue == 4)
+                LOG.write("ALERT  : unload from truck attempt unsuccessful: " + name + " cannot be unloaded " +
+                        "from truck reason : truck is busy" + getTime());
 
         } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
+    public static void truckGo(int statue){
+        try {
+            if (statue == 1)
+                LOG.write("INFO : " + "truck started successfully" + getTime());
+            else if (statue == 2)
+                LOG.write("ALERT  : truck start attempt unsuccessful: reason : truck already in work" + getTime());
+            else if (statue == 3)
+                LOG.write("ALERT  : truck returned successfully" + getTime());
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
+    public static void addCoins(int amount){
+        try {
+            LOG.write("INFO : " + amount + " coins added" + getTime());
+        }
+        catch (IOException e){
             System.out.println("ERROR : Writing to Log File");
             e.printStackTrace();
         }

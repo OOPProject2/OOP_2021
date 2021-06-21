@@ -112,4 +112,8 @@ public class Animal {
     protected void setYLoc(int YLoc) {
         this.YLoc = YLoc;
     }
+
+    public int getPrice() {
+        return Price;
+    }
 }
