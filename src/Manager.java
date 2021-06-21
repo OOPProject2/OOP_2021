@@ -211,7 +211,7 @@ public class Manager {
     }
 
     public void truckLoad(String itemName) {
-        //TODO
+        Truck.loadItemFromWareHouse(itemName);
     }
 
     public void truckUnload(String itemName) {

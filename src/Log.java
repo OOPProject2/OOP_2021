@@ -159,6 +159,20 @@ public class Log {
         }
     }
 
+    public static void loadToTruck(String name, int statue) {
+        try {
+            if (statue == 1)
+                LOG.write("INFO : " + name + " loaded to truck successfully" + getTime());
+            else if (statue == 2)
+                LOG.write("ALERT  : load to truck attempt unsuccessful: " + name + " cannot be loaded " +
+                        "to truck reason : not enough space" + getTime());
+
+        } catch (IOException e) {
+            System.out.println("ERROR : Writing to Log File");
+            e.printStackTrace();
+        }
+    }
+
     private static String getTime() {
         return " ~Time : " + Calendar.getInstance().getTime();
     }
