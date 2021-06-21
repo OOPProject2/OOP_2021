@@ -58,7 +58,7 @@ public class Manager {
         return false;
     }
 
-    public boolean foundPassword(String password, String userName) {
+    public boolean foundPassword(String userName, String password) {
         for (User user : users) {
             if (userName.equals(user.getUsername())) {
                 if (password.equals(user.getPassword())) {
