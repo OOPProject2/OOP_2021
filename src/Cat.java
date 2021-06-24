@@ -18,20 +18,19 @@ public class Cat extends OtherAnimals {
     protected void movement() {
         char movementDirection = Manager.closestProduct(getXLoc(), getXLoc());
         switch (movementDirection) {
-            case 'N': {
+            case 'N' -> {
                 move('N', MOVE_PER_TIME_UNIT);
             }
-            case 'E': {
+            case 'E' -> {
                 move('E', MOVE_PER_TIME_UNIT);
             }
-            case 'W': {
+            case 'W' -> {
                 move('W', MOVE_PER_TIME_UNIT);
             }
-            case 'S': {
+            case 'S' -> {
                 move('S', MOVE_PER_TIME_UNIT);
             }
-            case 'O': {
-                break;
+            case 'O' -> {
             }
         }
     }

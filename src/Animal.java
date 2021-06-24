@@ -24,19 +24,19 @@ public class Animal {
             Random rand = new Random();
             movementDirection = rand.nextInt(4);
             switch (movementDirection) {
-                case 0: {
+                case 0 -> {
                     if (move('N', length))
                         exit = true;
                 }
-                case 1: {
+                case 1 -> {
                     if (move('E', length))
                         exit = true;
                 }
-                case 2: {
+                case 2 -> {
                     if (move('S', length))
                         exit = true;
                 }
-                case 3: {
+                case 3 -> {
                     if (move('W', length))
                         exit = true;
                 }

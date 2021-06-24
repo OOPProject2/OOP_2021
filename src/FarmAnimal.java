@@ -40,21 +40,12 @@ public class FarmAnimal extends Animal {
         } else {
             char movementDirection = GameField.closestGrass(this.getXLoc(), this.getYLoc());
             switch (movementDirection) {
-                case 'O': {
-                    break;
+                case 'O' -> {
                 }
-                case 'N': {
-                    move('N', FARM_ANIMALS_MOVE_PER_TIME_UNIT);
-                }
-                case 'E': {
-                    move('E', FARM_ANIMALS_MOVE_PER_TIME_UNIT);
-                }
-                case 'W': {
-                    move('W', FARM_ANIMALS_MOVE_PER_TIME_UNIT);
-                }
-                case 'S': {
-                    move('S', FARM_ANIMALS_MOVE_PER_TIME_UNIT);
-                }
+                case 'N' -> move('N', FARM_ANIMALS_MOVE_PER_TIME_UNIT);
+                case 'E' -> move('E', FARM_ANIMALS_MOVE_PER_TIME_UNIT);
+                case 'W' -> move('W', FARM_ANIMALS_MOVE_PER_TIME_UNIT);
+                case 'S' -> move('S', FARM_ANIMALS_MOVE_PER_TIME_UNIT);
             }
         }
     }

@@ -39,60 +39,46 @@ public class Mission {
             Pattern pattern=Pattern.compile("\\w+");
             while (scanner.hasNext() && isStillCurrentLevel) {
                 switch (scanner.next(pattern).toLowerCase(Locale.ROOT)) {
-                    case "level": {
+                    case "level" -> {
                         isStillCurrentLevel = false;
-                        break;
                     }
-                    case "bear": {
+                    case "bear" -> {
                         Event.addWildAnimalSpawnEvent(scanner.nextInt(), "bear");
-                        break;
                     }
-                    case "lion": {
+                    case "lion" -> {
                         Event.addWildAnimalSpawnEvent(scanner.nextInt(), "lion");
-                        break;
                     }
-                    case "tiger": {
+                    case "tiger" -> {
                         Event.addWildAnimalSpawnEvent(scanner.nextInt(), "tiger");
-                        break;
                     }
-                    case "bread": {
+                    case "bread" -> {
                         Manager.addTask(new Task("bread", scanner.nextInt()));
-                        break;
                     }
-                    case "egg": {
+                    case "egg" -> {
                         Manager.addTask(new Task("egg", scanner.nextInt()));
-                        break;
                     }
-                    case "fabric": {
+                    case "fabric" -> {
                         Manager.addTask(new Task("fabric", scanner.nextInt()));
-                        break;
                     }
-                    case "feather": {
+                    case "feather" -> {
                         Manager.addTask(new Task("feather", scanner.nextInt()));
-                        break;
                     }
-                    case "flour": {
+                    case "flour" -> {
                         Manager.addTask(new Task("flour", scanner.nextInt()));
-                        break;
                     }
-                    case "ice" + "cream": {
+                    case "ice" + "cream" -> {
                         Manager.addTask(new Task("ice" + "cream", scanner.nextInt()));
-                        break;
                     }
-                    case "milk": {
+                    case "milk" -> {
                         Manager.addTask(new Task("milk", scanner.nextInt()));
-                        break;
                     }
-                    case "packed" + "milk": {
+                    case "packed" + "milk" -> {
                         Manager.addTask(new Task("packed" + "milk", scanner.nextInt()));
-                        break;
                     }
-                    case "shirt": {
+                    case "shirt" -> {
                         Manager.addTask(new Task("shirt", scanner.nextInt()));
-                        break;
                     }
-                    default:{
-                        break;
+                    default -> {
                     }
                 }
             }

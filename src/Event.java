@@ -23,10 +23,8 @@ public class Event {
 
     public static void addEvent(int eventCode) {
         switch (eventCode) {
-            case FILLING_BUCKET:
-                events.add(new Event(currentTime + Well.REFILLING_TIME, FILLING_BUCKET));
-            case TRUCK_GO:
-                events.add(new Event(currentTime + Truck.TIME_UNIT_TO_WORK, TRUCK_GO));
+            case FILLING_BUCKET -> events.add(new Event(currentTime + Well.REFILLING_TIME, FILLING_BUCKET));
+            case TRUCK_GO -> events.add(new Event(currentTime + Truck.TIME_UNIT_TO_WORK, TRUCK_GO));
         }
     }
 
@@ -76,20 +74,20 @@ public class Event {
 
     private static void doEvent(Event event) {
         switch (event.eventCode) {
-            case FILLING_BUCKET: {
+            case FILLING_BUCKET -> {
                 Well.fillingBucket();
                 event.statue = true;
                 Log.bucketFilled();
             }
-            case TRUCK_GO: {
+            case TRUCK_GO -> {
                 Log.truckGo(3);
                 event.statue = true;
                 Truck.returned();
             }
-            case WORK: {
+            case WORK -> {
                 event.statue = true;
                 switch (event.product.toLowerCase(Locale.ROOT)) {
-                    case "bread": {
+                    case "bread" -> {
                         while (event.productsCount > 0) {
                             Manager.addProduct(new Bread());
                             Log.addProduct("bread");
@@ -97,7 +95,7 @@ public class Event {
                         }
                         Manager.getWorkShopByName("Bakery").doneWorking();
                     }
-                    case "fabric": {
+                    case "fabric" -> {
                         while (event.productsCount > 0) {
                             Manager.addProduct(new Fabric());
                             Log.addProduct("fabric");
@@ -105,7 +103,7 @@ public class Event {
                         }
                         Manager.getWorkShopByName("Weaver").doneWorking();
                     }
-                    case "flour": {
+                    case "flour" -> {
                         while (event.productsCount > 0) {
                             Manager.addProduct(new Flour());
                             Log.addProduct("flour");
@@ -113,7 +111,7 @@ public class Event {
                         }
                         Manager.getWorkShopByName("Mill").doneWorking();
                     }
-                    case "ice" + "cream": {
+                    case "ice" + "cream" -> {
                         while (event.productsCount > 0) {
                             Manager.addProduct(new IceCream());
                             Log.addProduct("ice" + "cream");
@@ -121,7 +119,7 @@ public class Event {
                         }
                         Manager.getWorkShopByName("IceCreamShop").doneWorking();
                     }
-                    case "packed" + "milk": {
+                    case "packed" + "milk" -> {
                         while (event.productsCount > 0) {
                             Manager.addProduct(new PackedMilk());
                             Log.addProduct("packed" + "milk");
@@ -129,7 +127,7 @@ public class Event {
                         }
                         Manager.getWorkShopByName("MilkPacking").doneWorking();
                     }
-                    case "shirt": {
+                    case "shirt" -> {
                         while (event.productsCount > 0) {
                             Manager.addProduct(new Shirt());
                             Log.addProduct("shirt");
@@ -139,26 +137,26 @@ public class Event {
                     }
                 }
             }
-            case FARM_ANIMAL_PRODUCE: {
+            case FARM_ANIMAL_PRODUCE -> {
                 event.statue = true;
                 if (event.farmAnimal.getLife() <= 0)
                     return;
                 switch (event.product.toLowerCase(Locale.ROOT)) {
-                    case "egg": {
+                    case "egg" -> {
                         while (event.productsCount > 0) {
                             Manager.addProduct(new Egg());
                             Log.addProduct("egg");
                             event.productsCount--;
                         }
                     }
-                    case "feather": {
+                    case "feather" -> {
                         while (event.productsCount > 0) {
                             Manager.addProduct(new Feather());
                             Log.addProduct("feather");
                             event.productsCount--;
                         }
                     }
-                    case "milk": {
+                    case "milk" -> {
                         while (event.productsCount > 0) {
                             Manager.addProduct(new Milk());
                             Log.addProduct("milk");
@@ -168,31 +166,25 @@ public class Event {
                 }
                 event.farmAnimal.start();
             }
-            case PRODUCT_DISAPPEAR: {
+            case PRODUCT_DISAPPEAR -> {
                 event.statue = true;
                 if (!event.toDisappearProduct.isCollected()) {
                     Manager.removeProduct(event.toDisappearProduct);
                     Log.disappearProduct(event.toDisappearProduct.getName());
                 }
             }
-            case WILD_ANIMAL_ESCAPE: {
+            case WILD_ANIMAL_ESCAPE -> {
                 event.statue = true;
                 if (!event.toEscapeWildAnimal.isStored()) {
                     Manager.removeWildAnimal(event.toEscapeWildAnimal);
                 }
             }
-            case WILD_ANIMAL_SPAWN: {
+            case WILD_ANIMAL_SPAWN -> {
                 event.statue = true;
                 switch (event.toSpawnWildAnimal.toLowerCase(Locale.ROOT)) {
-                    case "bear": {
-                        Manager.addWildAnimal(new Bear());
-                    }
-                    case "lion": {
-                        Manager.addWildAnimal(new Lion());
-                    }
-                    case "tiger": {
-                        Manager.addWildAnimal(new Tiger());
-                    }
+                    case "bear" -> Manager.addWildAnimal(new Bear());
+                    case "lion" -> Manager.addWildAnimal(new Lion());
+                    case "tiger" -> Manager.addWildAnimal(new Tiger());
                 }
             }
         }

@@ -120,7 +120,7 @@ public class Manager {
             }
         }
         switch (workShopName.toLowerCase(Locale.ROOT)) {
-            case "bakery": {
+            case "bakery" -> {
                 if (coins >= Bakery.BAKERY_BUILD_COST) {
                     workShops.add(new Bakery());
                     coins -= Bakery.BAKERY_BUILD_COST;
@@ -131,7 +131,7 @@ public class Manager {
                     Log.Build(workShopName, 2);
                 }
             }
-            case "ice" + "cream" + "shop": {
+            case "ice" + "cream" + "shop" -> {
                 if (coins >= IceCreamShop.ICE_CREAM_SHOP_BUILD_COST) {
                     workShops.add(new IceCreamShop());
                     coins -= IceCreamShop.ICE_CREAM_SHOP_BUILD_COST;
@@ -141,7 +141,7 @@ public class Manager {
                     System.out.println("not enough coins");
                 }
             }
-            case "milk" + "packing": {
+            case "milk" + "packing" -> {
                 if (coins >= MilkPacking.MILK_PACKING_BUILD_COST) {
                     workShops.add(new MilkPacking());
                     coins -= MilkPacking.MILK_PACKING_BUILD_COST;
@@ -151,7 +151,7 @@ public class Manager {
                     System.out.println("not enough coins");
                 }
             }
-            case "mill": {
+            case "mill" -> {
                 if (coins >= Mill.MILL_BUILD_COST) {
                     workShops.add(new Mill());
                     coins -= Mill.MILL_BUILD_COST;
@@ -161,7 +161,7 @@ public class Manager {
                     System.out.println("not enough coins");
                 }
             }
-            case "tailor": {
+            case "tailor" -> {
                 if (coins >= Tailor.TAILOR_BUILD_COST) {
                     workShops.add(new Tailor());
                     coins -= Tailor.TAILOR_BUILD_COST;
@@ -171,7 +171,7 @@ public class Manager {
                     System.out.println("not enough coins");
                 }
             }
-            case "weaver": {
+            case "weaver" -> {
                 if (coins >= Weaver.WEAVER_BUILD_COST) {
                     workShops.add(new Weaver());
                     coins -= Weaver.WEAVER_BUILD_COST;
@@ -181,7 +181,7 @@ public class Manager {
                     System.out.println("not enough coins");
                 }
             }
-            default: {
+            default -> {
                 System.out.println("workshop not found");
                 Log.Build(workShopName, 3);
             }
@@ -233,7 +233,7 @@ public class Manager {
 
     public void buy(String animalName) {
         switch (animalName.toLowerCase(Locale.ROOT)) {
-            case "chicken": {
+            case "chicken" -> {
                 if (coins >= Chicken.getChickensPrice()) {
                     Chicken chicken = new Chicken();
                     coins -= Chicken.getChickensPrice();
@@ -246,7 +246,7 @@ public class Manager {
                     Log.buyAnimalLog("chicken", false, "not enough coins");
                 }
             }
-            case "turkey": {
+            case "turkey" -> {
                 if (coins >= Turkey.getTurkeyPrice()) {
                     Turkey turkey = new Turkey();
                     coins -= Turkey.getTurkeyPrice();
@@ -259,7 +259,7 @@ public class Manager {
                     Log.buyAnimalLog("turkey", false, "not enough coins");
                 }
             }
-            case "buffalo": {
+            case "buffalo" -> {
                 if (coins >= Buffalo.getBuffaloPrice()) {
                     Buffalo buffalo = new Buffalo();
                     coins -= Buffalo.getBuffaloPrice();
@@ -272,7 +272,7 @@ public class Manager {
                     Log.buyAnimalLog("buffalo", false, "not enough coins");
                 }
             }
-            case "dog": {
+            case "dog" -> {
                 if (coins >= Dog.getDogPrice()) {
                     Dog dog = new Dog();
                     coins -= Dog.getDogPrice();
@@ -285,7 +285,7 @@ public class Manager {
                     Log.buyAnimalLog("dog", false, "not enough coins");
                 }
             }
-            case "cat": {
+            case "cat" -> {
                 if (coins >= Cat.getCatPrice()) {
                     Cat cat = new Cat();
                     coins -= Cat.getCatPrice();
@@ -298,7 +298,7 @@ public class Manager {
                     Log.buyAnimalLog("cat", false, "not enough coins");
                 }
             }
-            default: {
+            default -> {
                 System.out.println("animal not found");
                 Log.buyAnimalLog(animalName, false, "animal not found");
             }
